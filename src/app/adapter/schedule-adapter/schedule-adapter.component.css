@@ -1,0 +1,36 @@
+.schedule_content{
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+}
+
+.schedule_content .datetime{
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  text-align: center;
+  margin: 2px;
+}
+.schedule_content .teams{
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  width: 65%;
+  border-left: rgba(128, 128, 128, 0.59) 1px solid;
+}
+.schedule_content .teams .team{
+  margin-left: 5px;
+}
+.schedule_content .result{
+  display: flex;
+  flex-direction: column;
+}
+.blink_me {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}

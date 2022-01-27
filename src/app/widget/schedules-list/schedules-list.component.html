@@ -1,0 +1,9 @@
+<div>
+  <nz-list [nzSplit]="false">
+    <nz-list-item *ngFor="let item of getAllSchedules(schedules)">
+          <app-schedule-adapter
+                                [schedule]="item"></app-schedule-adapter>
+    </nz-list-item>
+    <nz-list-empty *ngIf="schedules.length === 0"></nz-list-empty>
+  </nz-list>
+</div>

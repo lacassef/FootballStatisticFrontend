@@ -1,0 +1,24 @@
+<div class="schedule_content" *ngIf="schedule">
+  <div class="datetime">
+    <div *ngIf="schedule.status!=-1000">{{schedule.date}}</div>
+    <div *ngIf="schedule.status==100" style="color: rgba(128,128,128,0.6)">{{schedule.time}}</div>
+    <div *ngIf="schedule.status!=100">{{schedule.time}}</div>
+    <div *ngIf="(schedule.status==-1000)" style="color: red">{{current}}<span class="blink_me">'</span></div>
+  </div>
+  <div class="teams">
+    <div class="team">{{schedule.home.shortName}}</div>
+    <div class="team">{{schedule.away.shortName}}</div>
+  </div>
+  <div *ngIf="schedule.status==-1000" class="result">
+    <div>{{schedule.home.score}}</div>
+    <div>{{schedule.away.score}}</div>
+  </div>
+  <div *ngIf="schedule.status==100||schedule.status==120||schedule.status==110" class="result">
+    <div>{{schedule.home.score}}</div>
+    <div>{{schedule.away.score}}</div>
+  </div>
+  <div *ngIf="schedule.status==0" class="result">
+    <div>-</div>
+    <div>-</div>
+  </div>
+</div>
