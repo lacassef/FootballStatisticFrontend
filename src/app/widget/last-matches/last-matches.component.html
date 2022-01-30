@@ -1,0 +1,20 @@
+<div class="last_matches_widget">
+  <div class="row">
+    <nz-table [nzPageSize]="5" nzSize="small" #homeTable [nzData]="home">
+      <tbody>
+      <tr *ngFor="let data of homeTable.data">
+        <td><app-schedule-adapter [schedule]="data"></app-schedule-adapter></td>
+      </tr>
+      </tbody>
+    </nz-table>
+  </div>
+  <div class="row">
+    <nz-table [nzPageSize]="5" nzSize="small" #awayTable [nzData]="away">
+      <tbody>
+      <tr *ngFor="let data of awayTable.data">
+        <td><app-schedule-adapter [schedule]="data"></app-schedule-adapter></td>
+      </tr>
+      </tbody>
+    </nz-table>
+  </div>
+</div>

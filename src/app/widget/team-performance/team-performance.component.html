@@ -1,0 +1,459 @@
+<nz-card *ngIf="matchw">
+  <nz-collapse>
+    <nz-collapse-panel nzHeader="Resumo">
+      <div nz-row>
+        <div nz-col nzSpan="6" *ngIf="home">
+      <span style="font-size: small">
+        {{home.avgRating}}
+      </span>
+        </div>
+        <div nz-col nzSpan="12">
+      <span style="font-size: small">
+        Classificação
+      </span>
+        </div>
+        <div nz-col nzSpan="6" *ngIf="away">
+      <span style="font-size: small">
+      {{away.avgRating}}
+      </span>
+        </div>
+      </div>
+      <div nz-row>
+        <div nz-col nzSpan="6" *ngIf="home">
+      <span style="font-size: small">
+        {{home.matches}}
+      </span>
+        </div>
+        <div nz-col nzSpan="12">
+      <span style="font-size: small">
+        Partidas
+      </span>
+        </div>
+        <div nz-col nzSpan="6" *ngIf="away">
+      <span style="font-size: small">
+      {{away.matches}}
+      </span>
+        </div>
+      </div>
+    </nz-collapse-panel>
+    <nz-collapse-panel nzHeader="Ataque">
+      <div nz-row>
+        <div nz-col nzSpan="6" *ngIf="home">
+      <span style="font-size: small">
+        {{home.goalsScored/home.matches}}
+      </span>
+        </div>
+        <div nz-col nzSpan="12">
+      <span style="font-size: small">
+        Golos por partida
+      </span>
+        </div>
+        <div nz-col nzSpan="6" *ngIf="away">
+      <span style="font-size: small">
+      {{away.goalsScored/away.matches}}
+      </span>
+        </div>
+      </div>
+      <div nz-row>
+        <div nz-col nzSpan="6" *ngIf="home">
+      <span style="font-size: small">
+        {{home.penaltyGoals}}/{{home.penaltiesTaken}}
+      </span>
+        </div>
+        <div nz-col nzSpan="12">
+      <span style="font-size: small">
+        Golos de penalty
+      </span>
+        </div>
+        <div nz-col nzSpan="6" *ngIf="away">
+      <span style="font-size: small">
+      {{away.penaltyGoals}}/{{away.penaltyGoals}}
+      </span>
+        </div>
+      </div>
+      <div nz-row>
+        <div nz-col nzSpan="6" *ngIf="home">
+      <span style="font-size: small">
+        {{home.freeKickGoals}}/{{home.freeKickShots}}
+      </span>
+        </div>
+        <div nz-col nzSpan="12">
+      <span style="font-size: small">
+        Golos de falta
+      </span>
+        </div>
+        <div nz-col nzSpan="6" *ngIf="away">
+      <span style="font-size: small">
+      {{away.freeKickGoals}}/{{away.freeKickShots}}
+      </span>
+        </div>
+      </div>
+      <div nz-row>
+        <div nz-col nzSpan="6" *ngIf="home">
+      <span style="font-size: small">
+        {{home.headedGoals}}
+      </span>
+        </div>
+        <div nz-col nzSpan="12">
+      <span style="font-size: small">
+        Golos de cabeceio
+      </span>
+        </div>
+        <div nz-col nzSpan="6" *ngIf="away">
+      <span style="font-size: small">
+      {{away.headedGoals}}
+      </span>
+        </div>
+      </div>
+      <div nz-row>
+        <div nz-col nzSpan="6" *ngIf="home">
+      <span style="font-size: small">
+        {{home.fastBreakGoals}}/{{home.fastBreaks}}
+      </span>
+        </div>
+        <div nz-col nzSpan="12">
+      <span style="font-size: small">
+        Golos de contra-ataque
+      </span>
+        </div>
+        <div nz-col nzSpan="6" *ngIf="away">
+      <span style="font-size: small">
+      {{away.fastBreakGoals}}/{{away.fastBreaks}}
+      </span>
+        </div>
+      </div>
+      <nz-divider></nz-divider>
+      <div nz-row>
+        <div nz-col nzSpan="6" *ngIf="home">
+      <span style="font-size: small">
+        {{home.goalsFromInsideTheBox/home.matches}}
+      </span>
+        </div>
+        <div nz-col nzSpan="12">
+      <span style="font-size: small">
+        Golos na area por partida
+      </span>
+        </div>
+        <div nz-col nzSpan="6" *ngIf="away">
+      <span style="font-size: small">
+      {{away.goalsFromInsideTheBox/away.matches}}
+      </span>
+        </div>
+      </div>
+      <div nz-row>
+        <div nz-col nzSpan="6" *ngIf="home">
+      <span style="font-size: small">
+        {{home.goalsFromOutsideTheBox/home.matches}}
+      </span>
+        </div>
+        <div nz-col nzSpan="12">
+      <span style="font-size: small">
+        Golos fora da area por partida
+      </span>
+        </div>
+        <div nz-col nzSpan="6" *ngIf="away">
+      <span style="font-size: small">
+      {{away.goalsFromOutsideTheBox/away.matches}}
+      </span>
+        </div>
+      </div>
+      <nz-divider></nz-divider>
+      <div nz-row>
+        <div nz-col nzSpan="6" *ngIf="home">
+      <span style="font-size: small">
+        {{home.bigChances/home.matches}}
+      </span>
+        </div>
+        <div nz-col nzSpan="12">
+      <span style="font-size: small">
+        Grandes chances por jogo
+      </span>
+        </div>
+        <div nz-col nzSpan="6" *ngIf="away">
+      <span style="font-size: small">
+      {{away.bigChances/away.matches}}
+      </span>
+        </div>
+      </div>
+      <div nz-row>
+        <div nz-col nzSpan="6" *ngIf="home">
+      <span style="font-size: small">
+        {{home.bigChancesMissed/home.matches}}
+      </span>
+        </div>
+        <div nz-col nzSpan="12">
+      <span style="font-size: small">
+        Grandes chances falhadas por jogo
+      </span>
+        </div>
+        <div nz-col nzSpan="6" *ngIf="away">
+      <span style="font-size: small">
+      {{away.bigChancesMissed/away.matches}}
+      </span>
+        </div>
+      </div>
+      <nz-divider></nz-divider>
+      <div nz-row>
+        <div nz-col nzSpan="6" *ngIf="home">
+      <span style="font-size: small">
+        {{home.shots/home.matches}}
+      </span>
+        </div>
+        <div nz-col nzSpan="12">
+      <span style="font-size: small">
+        Chutes por partida
+      </span>
+        </div>
+        <div nz-col nzSpan="6" *ngIf="away">
+      <span style="font-size: small">
+      {{away.shots/away.matches}}
+      </span>
+        </div>
+      </div>
+      <div nz-row>
+        <div nz-col nzSpan="6" *ngIf="home">
+      <span style="font-size: small">
+        {{home.shotsOnTarget/home.matches}}
+      </span>
+        </div>
+        <div nz-col nzSpan="12">
+      <span style="font-size: small">
+        Chutes ao alvo por partida
+      </span>
+        </div>
+        <div nz-col nzSpan="6" *ngIf="away">
+      <span style="font-size: small">
+      {{away.shotsOnTarget/away.matches}}
+      </span>
+        </div>
+      </div>
+      <div nz-row>
+        <div nz-col nzSpan="6" *ngIf="home">
+      <span style="font-size: small">
+        {{home.fastBreakShots}}/{{home.fastBreaks}}
+      </span>
+        </div>
+        <div nz-col nzSpan="12">
+      <span style="font-size: small">
+        Chutes de contra-ataque
+      </span>
+        </div>
+        <div nz-col nzSpan="6" *ngIf="away">
+      <span style="font-size: small">
+      {{away.fastBreakShots}}/{{away.fastBreaks}}
+      </span>
+        </div>
+      </div>
+      <nz-divider></nz-divider>
+      <div nz-row>
+        <div nz-col nzSpan="6" *ngIf="home">
+      <span style="font-size: small">
+        {{home.shotsFromInsideTheBox/home.matches}}
+      </span>
+        </div>
+        <div nz-col nzSpan="12">
+      <span style="font-size: small">
+        Chutes na area por partida
+      </span>
+        </div>
+        <div nz-col nzSpan="6" *ngIf="away">
+      <span style="font-size: small">
+      {{away.shotsFromInsideTheBox/away.matches}}
+      </span>
+        </div>
+      </div>
+      <div nz-row>
+        <div nz-col nzSpan="6" *ngIf="home">
+      <span style="font-size: small">
+        {{home.shotsFromOutsideTheBox/home.matches}}
+      </span>
+        </div>
+        <div nz-col nzSpan="12">
+      <span style="font-size: small">
+        Chutes fora da area por partida
+      </span>
+        </div>
+        <div nz-col nzSpan="6" *ngIf="away">
+      <span style="font-size: small">
+      {{away.shotsFromOutsideTheBox/away.matches}}
+      </span>
+        </div>
+      </div>
+    </nz-collapse-panel>
+    <nz-collapse-panel nzHeader="Defesa">
+      <div nz-row>
+        <div nz-col nzSpan="6" *ngIf="home">
+      <span style="font-size: small">
+        {{home.cleanSheets}}
+      </span>
+        </div>
+        <div nz-col nzSpan="12">
+      <span style="font-size: small">
+        Jogos sem sofrer golos
+      </span>
+        </div>
+        <div nz-col nzSpan="6" *ngIf="away">
+      <span style="font-size: small">
+      {{away.cleanSheets}}
+      </span>
+        </div>
+      </div>
+      <nz-divider></nz-divider>
+      <div nz-row>
+        <div nz-col nzSpan="6" *ngIf="home">
+      <span style="font-size: small">
+        {{home.goalsConceded/home.matches}}
+      </span>
+        </div>
+        <div nz-col nzSpan="12">
+      <span style="font-size: small">
+        Golos sofridos por partida
+      </span>
+        </div>
+        <div nz-col nzSpan="6" *ngIf="away">
+      <span style="font-size: small">
+      {{away.goalsConceded/away.matches}}
+      </span>
+        </div>
+      </div>
+      <div nz-row>
+        <div nz-col nzSpan="6" *ngIf="home">
+      <span style="font-size: small">
+        {{home.penaltyGoalsConceded}}/{{home.penaltiesCommited}}
+      </span>
+        </div>
+        <div nz-col nzSpan="12">
+      <span style="font-size: small">
+        Golos de penalty sofridos
+      </span>
+        </div>
+        <div nz-col nzSpan="6" *ngIf="away">
+      <span style="font-size: small">
+      {{away.penaltyGoalsConceded}}/{{away.penaltiesCommited}}
+      </span>
+        </div>
+      </div>
+      <nz-divider></nz-divider>
+      <div nz-row>
+        <div nz-col nzSpan="6" *ngIf="home">
+      <span style="font-size: small">
+        {{home.tackles/home.matches}}
+      </span>
+        </div>
+        <div nz-col nzSpan="12">
+      <span style="font-size: small">
+        Desarmes por partida
+      </span>
+        </div>
+        <div nz-col nzSpan="6" *ngIf="away">
+      <span style="font-size: small">
+      {{away.tackles/away.matches}}
+      </span>
+        </div>
+      </div>
+      <div nz-row>
+        <div nz-col nzSpan="6" *ngIf="home">
+      <span style="font-size: small">
+        {{home.lastManTackles}}
+      </span>
+        </div>
+        <div nz-col nzSpan="12">
+      <span style="font-size: small">
+        Desarmes ao ultimo homem
+      </span>
+        </div>
+        <div nz-col nzSpan="6" *ngIf="away">
+      <span style="font-size: small">
+      {{away.lastManTackles}}
+      </span>
+        </div>
+      </div>
+      <div nz-row>
+        <div nz-col nzSpan="6" *ngIf="home">
+      <span style="font-size: small">
+        {{home.interceptions/home.matches}}
+      </span>
+        </div>
+        <div nz-col nzSpan="12">
+      <span style="font-size: small">
+        Interceptações por partida
+      </span>
+        </div>
+        <div nz-col nzSpan="6" *ngIf="away">
+      <span style="font-size: small">
+      {{away.interceptions/away.matches}}
+      </span>
+        </div>
+      </div>
+      <div nz-row>
+        <div nz-col nzSpan="6" *ngIf="home">
+      <span style="font-size: small">
+        {{home.clearances/home.matches}}
+      </span>
+        </div>
+        <div nz-col nzSpan="12">
+      <span style="font-size: small">
+        Cortes por partida
+      </span>
+        </div>
+        <div nz-col nzSpan="6" *ngIf="away">
+      <span style="font-size: small">
+      {{away.clearances/away.matches}}
+      </span>
+        </div>
+      </div>
+      <div nz-row>
+        <div nz-col nzSpan="6" *ngIf="home">
+      <span style="font-size: small">
+        {{home.clearancesOffLine}}
+      </span>
+        </div>
+        <div nz-col nzSpan="12">
+      <span style="font-size: small">
+        Cortes na linha do golo
+      </span>
+        </div>
+        <div nz-col nzSpan="6" *ngIf="away">
+      <span style="font-size: small">
+      {{away.clearancesOffLine}}
+      </span>
+        </div>
+      </div>
+      <nz-divider></nz-divider>
+      <div nz-row>
+        <div nz-col nzSpan="6" *ngIf="home">
+      <span style="font-size: small">
+        {{home.errorsLeadingToGoal}}
+      </span>
+        </div>
+        <div nz-col nzSpan="12">
+      <span style="font-size: small">
+        Erros que levaram a golo
+      </span>
+        </div>
+        <div nz-col nzSpan="6" *ngIf="away">
+      <span style="font-size: small">
+      {{away.errorsLeadingToGoal}}
+      </span>
+        </div>
+      </div>
+      <div nz-row>
+        <div nz-col nzSpan="6" *ngIf="home">
+      <span style="font-size: small">
+        {{home.errorsLeadingToShot}}
+      </span>
+        </div>
+        <div nz-col nzSpan="12">
+      <span style="font-size: small">
+        Erros que levaram a chute
+      </span>
+        </div>
+        <div nz-col nzSpan="6" *ngIf="away">
+      <span style="font-size: small">
+      {{away.errorsLeadingToShot}}
+      </span>
+        </div>
+      </div>
+    </nz-collapse-panel>
+  </nz-collapse>
+</nz-card>

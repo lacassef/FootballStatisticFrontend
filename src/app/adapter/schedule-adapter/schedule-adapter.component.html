@@ -6,19 +6,35 @@
     <div *ngIf="(schedule.status==-1000)" style="color: red">{{current}}<span class="blink_me">'</span></div>
   </div>
   <div class="teams">
-    <div class="team">{{schedule.home.shortName}}</div>
-    <div class="team">{{schedule.away.shortName}}</div>
+    <div class="team" [class.match_winner]="schedule.home.score>schedule.away.score"
+         [class.match_loser]="schedule.home.score<schedule.away.score"
+         [class.match_draw]="schedule.home.score==schedule.away.score">{{schedule.home.shortName}}</div>
+    <div class="team" [class.match_winner]="schedule.home.score<schedule.away.score"
+         [class.match_loser]="schedule.home.score>schedule.away.score"
+         [class.match_draw]="schedule.home.score==schedule.away.score">{{schedule.away.shortName}}</div>
   </div>
   <div *ngIf="schedule.status==-1000" class="result">
-    <div>{{schedule.home.score}}</div>
-    <div>{{schedule.away.score}}</div>
+    <div [class.match_winner]="schedule.home.score>schedule.away.score"
+         [class.match_loser]="schedule.home.score<schedule.away.score"
+         [class.match_draw]="schedule.home.score==schedule.away.score" style="color: red">{{schedule.home.score}}</div>
+    <div [class.match_winner]="schedule.home.score<schedule.away.score"
+         [class.match_loser]="schedule.home.score>schedule.away.score"
+         [class.match_draw]="schedule.home.score==schedule.away.score" style="color: red">{{schedule.away.score}}</div>
   </div>
   <div *ngIf="schedule.status==100||schedule.status==120||schedule.status==110" class="result">
-    <div>{{schedule.home.score}}</div>
-    <div>{{schedule.away.score}}</div>
+    <div [class.match_winner]="schedule.home.score>schedule.away.score"
+         [class.match_loser]="schedule.home.score<schedule.away.score"
+         [class.match_draw]="schedule.home.score==schedule.away.score">{{schedule.home.score}}</div>
+    <div [class.match_winner]="schedule.home.score<schedule.away.score"
+         [class.match_loser]="schedule.home.score>schedule.away.score"
+         [class.match_draw]="schedule.home.score==schedule.away.score">{{schedule.away.score}}</div>
   </div>
   <div *ngIf="schedule.status==0" class="result">
-    <div>-</div>
-    <div>-</div>
+    <div [class.match_winner]="schedule.home.score>schedule.away.score"
+         [class.match_loser]="schedule.home.score<schedule.away.score"
+         [class.match_draw]="schedule.home.score==schedule.away.score">-</div>
+    <div [class.match_winner]="schedule.home.score<schedule.away.score"
+         [class.match_loser]="schedule.home.score>schedule.away.score"
+         [class.match_draw]="schedule.home.score==schedule.away.score">-</div>
   </div>
 </div>

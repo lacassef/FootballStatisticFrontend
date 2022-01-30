@@ -1,0 +1,6 @@
+.last_matches_widget{
+  display: flex;
+  flex-direction: row;
+}
+.last_matches_widget .row{
+}

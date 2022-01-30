@@ -1,0 +1,143 @@
+<div *ngIf="period">
+  <div nz-row>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.home.possession}}%</span></div>
+    <div nz-col nzSpan="12"><span style="font-size: small">Posse de bola</span></div>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.away.possession}}%</span></div>
+  </div>
+  <nz-divider></nz-divider>
+  <div nz-row>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.home.totalShots}}</span></div>
+    <div nz-col nzSpan="12"><span style="font-size: small">Chutes</span></div>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.away.totalShots}}</span></div>
+  </div>
+  <div nz-row>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.home.shotsOnTarget}}</span></div>
+    <div nz-col nzSpan="12"><span style="font-size: small">Chutes ao alvo</span></div>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.away.shotsOnTarget}}</span></div>
+  </div>
+  <div nz-row>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.home.blockedShots}}</span></div>
+    <div nz-col nzSpan="12"><span style="font-size: small">Chutes bloqueados</span></div>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.away.blockedShots}}</span></div>
+  </div>
+  <nz-divider></nz-divider>
+  <div nz-row>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.home.shotsInsideTheBox}}</span></div>
+    <div nz-col nzSpan="12"><span style="font-size: small">Chutes de dentro da area</span></div>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.away.shotsInsideTheBox}}</span></div>
+  </div>
+  <div nz-row>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.home.shotsOutsideTheBox}}</span></div>
+    <div nz-col nzSpan="12"><span style="font-size: small">Chutes de`fora da area</span></div>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.away.shotsOutsideTheBox}}</span></div>
+  </div>
+  <nz-divider></nz-divider>
+  <div nz-row>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.home.bigChances}}</span></div>
+    <div nz-col nzSpan="12"><span style="font-size: small">Grandes chances</span></div>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.away.bigChances}}</span></div>
+  </div>
+  <div nz-row>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.home.bigChancesMissed}}</span></div>
+    <div nz-col nzSpan="12"><span style="font-size: small">Grandes chances falhadas</span></div>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.away.bigChancesMissed}}</span></div>
+  </div>
+  <nz-divider></nz-divider>
+  <div nz-row>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.home.cornerKicks}}</span></div>
+    <div nz-col nzSpan="12"><span style="font-size: small">Escanteios</span></div>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.away.cornerKicks}}</span></div>
+  </div>
+  <div nz-row>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.home.fouls}}</span></div>
+    <div nz-col nzSpan="12"><span style="font-size: small">Faltas</span></div>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.away.fouls}}</span></div>
+  </div>
+  <div nz-row>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.home.offside}}</span></div>
+    <div nz-col nzSpan="12"><span style="font-size: small">Foras de jogo</span></div>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.away.offside}}</span></div>
+  </div>
+  <nz-divider></nz-divider>
+  <div nz-row>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.home.yellowCard}}</span></div>
+    <div nz-col nzSpan="12"><span style="font-size: small">Cartão amarelo</span></div>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.away.yellowCard}}</span></div>
+  </div>
+  <div nz-row>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.home.redCard}}</span></div>
+    <div nz-col nzSpan="12"><span style="font-size: small">Cartão vermelho</span></div>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.away.redCard}}</span></div>
+  </div>
+  <nz-divider></nz-divider>
+  <div nz-row>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.home.totalPasses}}</span></div>
+    <div nz-col nzSpan="12"><span style="font-size: small">Passes</span></div>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.away.totalPasses}}</span></div>
+  </div>
+  <div nz-row>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.home.accuratePasses}}</span></div>
+    <div nz-col nzSpan="12"><span style="font-size: small">Passes certos</span></div>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.away.accuratePasses}}</span></div>
+  </div>
+  <nz-divider></nz-divider>
+  <div nz-row>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.home.totalLongBalls}}</span></div>
+    <div nz-col nzSpan="12"><span style="font-size: small">Passes longos</span></div>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.away.totalLongBalls}}</span></div>
+  </div>
+  <div nz-row>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.home.accurateLongBalls}}</span></div>
+    <div nz-col nzSpan="12"><span style="font-size: small">Passes longos certos</span></div>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.away.accurateLongBalls}}</span></div>
+  </div>
+  <nz-divider></nz-divider>
+  <div nz-row>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.home.totalCrosses}}</span></div>
+    <div nz-col nzSpan="12"><span style="font-size: small">Cruzamentos</span></div>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.away.totalCrosses}}</span></div>
+  </div>
+  <div nz-row>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.home.accurateCrosses}}</span></div>
+    <div nz-col nzSpan="12"><span style="font-size: small">Cruzamentos certos</span></div>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.away.accurateCrosses}}</span></div>
+  </div>
+  <nz-divider></nz-divider>
+  <div nz-row>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.home.totalDribles}}</span></div>
+    <div nz-col nzSpan="12"><span style="font-size: small">Dribles</span></div>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.away.totalDribles}}</span></div>
+  </div>
+  <div nz-row>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.home.accurateDribles}}</span></div>
+    <div nz-col nzSpan="12"><span style="font-size: small">Dribles certos</span></div>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.away.accurateDribles}}</span></div>
+  </div>
+  <nz-divider></nz-divider>
+  <div nz-row>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.home.duelsWon}}</span></div>
+    <div nz-col nzSpan="12"><span style="font-size: small">Duelos vencidos</span></div>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.away.duelsWon}}</span></div>
+  </div>
+  <div nz-row>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.home.aerialDuelsWon}}</span></div>
+    <div nz-col nzSpan="12"><span style="font-size: small">Duelos aereos vencidos</span></div>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.away.aerialDuelsWon}}</span></div>
+  </div>
+  <nz-divider></nz-divider>
+  <div nz-row>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.home.tackles}}</span></div>
+    <div nz-col nzSpan="12"><span style="font-size: small">Desarmes</span></div>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.away.tackles}}</span></div>
+  </div>
+  <div nz-row>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.home.interceptions}}</span></div>
+    <div nz-col nzSpan="12"><span style="font-size: small">Interceptações</span></div>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.away.interceptions}}</span></div>
+  </div>
+  <div nz-row>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.home.clearances}}</span></div>
+    <div nz-col nzSpan="12"><span style="font-size: small">Cortes</span></div>
+    <div nz-col nzSpan="6"><span style="font-size: small">{{period.away.clearances}}</span></div>
+  </div>
+</div>

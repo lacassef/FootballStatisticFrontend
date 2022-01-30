@@ -1,0 +1,35 @@
+<nz-card *ngIf="match" class="header_content" [nzTitle]="match.tournament.name"
+         nzBorderless [nzExtra] ="actionExit">
+  <div nz-row>
+    <div nz-col nzSpan="8">{{match.home.name}}</div>
+    <div nz-col nzSpan="8"></div>
+    <div nz-col nzSpan="8">{{match.away.name}}</div>
+  </div>
+  <div nz-row>
+    <div nz-col nzSpan="8">
+      <nz-avatar [nzSize]="64" [nzSrc]="'https://api.sofascore.app/api/v1/team/'+match.home.id+'/image'">
+
+      </nz-avatar>
+    </div>
+    <div nz-col nzSpan="8" *ngIf="match.status==0">{{match.time}}</div>
+    <div nz-col nzSpan="8" *ngIf="match.status==100||match.status==120||match.status==110">
+      {{match.home.score}} - {{match.away.score}}
+      <br>
+      ({{match.home.score1}}-{{match.away.score1}})
+    </div>
+    <div nz-col nzSpan="8" *ngIf="!(match.live.period===-90 || match.live.period===-1)" style="color: red">{{match.home.score}} - {{match.away.score}}</div>
+    <div nz-col nzSpan="8">
+      <nz-avatar [nzSize]="64" [nzSrc]="'https://api.sofascore.app/api/v1/team/'+match.away.id+'/image'">
+      </nz-avatar>
+    </div>
+  </div>
+  <div nz-row>
+    <div nz-col nzSpan="2"></div>
+    <div nz-col nzSpan="20">{{match.venue.city}}, {{match.venue.stadium}}</div>
+    <div nz-col nzSpan="2"></div>
+  </div>
+</nz-card>
+<ng-template #actionExit>
+  <button (click)="closeIsClicked()" nz-button nzType="text" nzShape="circle"><i nz-icon nzType="close" nzTheme="outline"></i>
+  </button>
+</ng-template>

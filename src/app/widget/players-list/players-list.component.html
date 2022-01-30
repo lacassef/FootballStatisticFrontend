@@ -1,0 +1,13 @@
+<nz-card *ngIf="line">
+  <div class="players_container">
+    <div><span style="font-size: small">Formações {{line.confirmed?'':'não'}} confirmadas</span></div>
+    <div class="teams">
+      <nz-card class="team">
+        <div>{{line.home.formation}}</div>
+      </nz-card>
+      <nz-card class="team">
+        <div>{{line.away.formation}}</div>
+      </nz-card>
+    </div>
+  </div>
+</nz-card>

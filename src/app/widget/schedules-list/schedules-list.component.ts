@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Schedule, tournament} from "../../model/schedule";
 
 @Component({
@@ -9,10 +9,14 @@ import {Schedule, tournament} from "../../model/schedule";
 export class SchedulesListComponent implements OnInit {
 
   @Input() schedules: Schedule[] = []
-
+  @Output() onSelectMatch: EventEmitter<number> = new EventEmitter()
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  matchIsClicked(id: number){
+    this.onSelectMatch.emit(id)
   }
 
   getAllSchedules(schedules: Schedule[]): Schedule[]{

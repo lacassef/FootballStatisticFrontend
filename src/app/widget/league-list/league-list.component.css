@@ -1,0 +1,10 @@
+.league_content{
+  display: flex;
+  flex-direction: column;
+  /*width: 100%;*/
+}
+
+.league_meta{
+  display: flex;
+  flex-direction: row;
+}

@@ -1,0 +1,16 @@
+<div  class="index_content">
+  <div *ngIf="schedules.length > 0" class="list_content">
+    <nz-collapse nzAccordion style="width: 350px">
+      <nz-collapse-panel #ok [nzActive]="false" *ngFor="let panel of getAllTags(schedules)" [nzHeader]="panel"
+                         >
+        <app-league-list (onClickMatch)="matchId=$event" *ngIf="ok.nzActive" [schedules]="getAllSchedulesFromTag(panel)"></app-league-list>
+      </nz-collapse-panel>
+    </nz-collapse>
+  </div>
+  <div *ngIf="schedules.length === 0" class="list_content">
+    <nz-list-empty style="align-self: center; width: 350px"></nz-list-empty>
+  </div>
+  <div class="matches_content">
+      <app-match (onMatchIdChange)="matchId=$event" [matchId]="matchId"></app-match>
+  </div>
+</div>

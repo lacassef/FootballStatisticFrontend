@@ -1,0 +1,7 @@
+<nz-card *ngIf="stats">
+  <nz-tabset nzType="card">
+    <nz-tab *ngFor="let period of stats.periods" [nzTitle]="period.name">
+      <app-stats-period-adapter [period]="period"></app-stats-period-adapter>
+    </nz-tab>
+  </nz-tabset>
+</nz-card>

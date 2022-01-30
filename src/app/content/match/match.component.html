@@ -1,0 +1,31 @@
+<div *ngIf="match&&!none" class="match_content">
+  <div><app-match-header (onClickClose)="close()" [match]="match"></app-match-header></div>
+  <div>
+    <nz-tabset nzType="card">
+      <nz-tab nzTitle="Pressão" *ngIf="!(match.status===0)">
+        <app-match-details [match]="match"></app-match-details>
+      </nz-tab>
+      <nz-tab nzTitle="Eventos" *ngIf="!(match.status===0)">
+        <app-incident-adapter [match]="match"></app-incident-adapter>
+      </nz-tab>
+      <nz-tab nzTitle="Estatisticas" *ngIf="(match.live.period===-90)||!(match.status === 0)">
+        <app-match-statistics [match]="match"></app-match-statistics>
+      </nz-tab>
+      <nz-tab nzTitle="Performance" *ngIf="!(match.live.period===-90)||(match.status === 0)">
+        <app-team-performance [match]="match"></app-team-performance>
+      </nz-tab>
+      <nz-tab *ngIf="match.hasLines" nzTitle="Jogadores">
+        <app-players-list [match]="match"></app-players-list>
+      </nz-tab>
+      <nz-tab nzTitle="Ultimos jogos" *ngIf="!(match.live.period===-90)">
+        <app-last-matches [match]="match"></app-last-matches>
+      </nz-tab>
+      <nz-tab nzTitle="Confrontos">
+        <app-head-matches [match]="match"></app-head-matches>
+      </nz-tab>
+      <nz-tab *ngIf="!(match.live.period===-90)" nzTitle="Aposta">
+
+      </nz-tab>
+    </nz-tabset>
+  </div>
+</div>

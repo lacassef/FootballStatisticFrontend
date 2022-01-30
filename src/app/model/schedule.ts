@@ -5,6 +5,7 @@ export interface venue {
 
 export interface away {
 	score: number;
+  score1: number;
 	name: string;
 	id: number;
 	shortName: string;
@@ -24,6 +25,7 @@ export interface live {
 
 export interface home {
 	score: number;
+  score1: number;
 	name: string;
 	id: number;
 	shortName: string;

@@ -1,0 +1,95 @@
+<nz-card *ngIf="incidents">
+  <nz-timeline [nzPending]="!(matchw!!.live.period===-90)" [nzReverse]="true" [nzPendingDot]="'Ao vivo'" nzMode="custom">
+    <nz-timeline-item
+                      [nzDot]="period"></nz-timeline-item>
+    <ng-container *ngFor="let eveht of incidents.reverse()">
+      <nz-timeline-item *ngIf="eveht.code===0" [nzPosition]="!eveht.isHome?'left':'right'"
+                        [nzDot]="goal"><span style="font-size: small">{{eveht.player.name}} {{eveht.time}}</span>'</nz-timeline-item>
+      <nz-timeline-item *ngIf="eveht.code===1" [nzPosition]="!eveht.isHome?'left':'right'"
+                        [nzDot]="penalty"><span style="font-size: small">{{eveht.player.name}} {{eveht.time}}</span>'</nz-timeline-item>
+<!--      <nz-timeline-item *ngIf="eveht.code===3" [nzPosition]="!eveht.isHome?'left':'right'"-->
+<!--                        [nzDot]="period"></nz-timeline-item>-->
+<!--      <nz-timeline-item *ngIf="eveht.code===4" [nzPosition]="!eveht.isHome?'left':'right'"-->
+<!--                        [nzDot]="period"></nz-timeline-item>-->
+      <nz-timeline-item *ngIf="eveht.code===2" [nzPosition]="!eveht.isHome?'left':'right'"
+                        [nzDot]="substitution"><span style="color: gray; font-size: small"><span style="color: gray; font-size: smaller">Sai:</span>
+        {{eveht.playerOut.shortName}} </span>
+        <span style="font-size: small"> <span style="color: gray; font-size: smaller">Entra:</span> {{eveht.playerIn.name}} {{eveht.time}}
+        </span>'</nz-timeline-item>
+      <nz-timeline-item *ngIf="eveht.code===5" [nzPosition]="!eveht.isHome?'left':'right'"
+                        [nzDot]="var_interview"><span style="font-size: small">{{eveht.player.name}} {{eveht.time}}</span>'</nz-timeline-item>
+      <nz-timeline-item *ngIf="eveht.code===6" [nzPosition]="!eveht.isHome?'left':'right'"
+                        [nzDot]="missed_penalty"><span style="font-size: small">{{eveht.player.name}} {{eveht.time}}</span>'</nz-timeline-item>
+      <nz-timeline-item *ngIf="eveht.code===7" [nzPosition]="!eveht.isHome?'left':'right'"
+                        [nzDot]="own_goal"><span style="font-size: small">{{eveht.player.name}} {{eveht.time}}</span>'</nz-timeline-item>
+      <nz-timeline-item *ngIf="eveht.code===8" [nzPosition]="!eveht.isHome?'left':'right'"
+                        [nzDot]="yellow_card"><span style="font-size: small">{{eveht.player.name}} {{eveht.time}}</span>'</nz-timeline-item>
+      <nz-timeline-item *ngIf="eveht.code===9" [nzPosition]="!eveht.isHome?'left':'right'"
+                        [nzDot]="second_yellow_card"><span style="font-size: small">{{eveht.player.name}} {{eveht.time}}</span>'</nz-timeline-item>
+      <nz-timeline-item *ngIf="eveht.code===10" [nzPosition]="!eveht.isHome?'left':'right'"
+                        [nzDot]="red_card"><span style="font-size: small">{{eveht.player.name}} {{eveht.time}}</span>'</nz-timeline-item>
+<!--      <nz-timeline-item *ngIf="eveht.code===11" [nzPosition]="!eveht.isHome?'left':'right'"-->
+<!--                        [nzDot]="period"></nz-timeline-item>-->
+<!--      <nz-timeline-item *ngIf="eveht.code===12" [nzPosition]="!eveht.isHome?'left':'right'"-->
+<!--                        [nzDot]="period"></nz-timeline-item>-->
+      <nz-timeline-item *ngIf="eveht.code===13" [nzPosition]="!eveht.isHome?'left':'right'"
+                        [nzDot]="missed_penalty"><span style="font-size: small">{{eveht.player.name}}</span></nz-timeline-item>
+      <nz-timeline-item *ngIf="eveht.code===14" [nzPosition]="!eveht.isHome?'left':'right'"
+                        [nzDot]="penalty"><span style="font-size: small">{{eveht.player.name}}</span></nz-timeline-item>
+    </ng-container>
+    <nz-timeline-item *ngIf="(matchw!!.live.period===-90)"
+      [nzDot]="match_ended"></nz-timeline-item>
+  </nz-timeline>
+  <ng-template #goal>
+    <svg width="16" height="16" viewBox="0 0 1024 1024" fill="#52b030" style="min-width: 16px; display: inline-block;">
+      <path d="M787.968 236.064c-152.16-152.16-399.744-152.16-551.936 0-152.16 152.128-152.16 399.776 0 551.936 152.16 152.096 399.744 152.16 551.936 0 152.16-152.16 152.16-399.808 0-551.936zM734.592 734.624c-99.040 98.912-248.096 118.048-366.4 57.376l28.064-66.144-98.080-98.112-66.208 28.064c-60.608-118.368-41.568-267.36 57.44-366.4 98.976-98.912 247.872-118.048 366.272-57.44l-27.776 65.376 98.144 98.144 65.664-27.808c61.056 118.432 42.016 267.744-57.12 366.944zM549.632 549.664l-32.608 150.912 127.2 49.216 105.6-105.6-50.72-128.576zM284.576 382.656l52.544 124.928 144.256-26.176 26.688-143.776-125.472-52.992z"></path>
+    </svg>
+  </ng-template>
+  <ng-template #penalty>
+    <svg width="13px" height="14px" viewBox="0 0 929 1024" fill="#52b030" style="min-width: 16px; display: inline-block;">
+      <path d="M0 0v368.593h109.289v-253.207h710.144v253.207h109.289v-368.593zM185.344 350.86c-153.647 153.833-153.647 404.154 0 557.708 153.926 153.879 404.201 153.879 558.080 0 153.553-153.6 153.553-403.875 0-557.708-153.879-153.786-404.154-153.786-558.080 0zM675.002 840.192c-93.929 93.463-234.729 111.663-346.577 54.132l24.297-58.228-94.673-94.72-58.415 24.343c-57.344-111.895-39.331-252.788 54.272-346.345 93.556-93.556 234.356-111.709 346.438-54.319l-24.017 57.67 94.534 94.673 58.042-24.017c57.809 111.988 39.471 253.114-53.9 346.81zM483.142 651.404l-32.815 152.343 128.512 49.757 106.636-106.636-51.2-130.001zM342.295 411.276l-99.188 98.863 53.155 126.417 145.827-26.345 26.996-145.455z"></path>
+    </svg>
+  </ng-template>
+  <ng-template #yellow_card>
+    <svg width="16" height="14" viewBox="0 0 6 8" fill="#ffa500" style="margin-top: 1px;">
+      <rect x="0" y="0" width="6" height="8" rx="1" ry="1"></rect>
+    </svg>
+  </ng-template>
+  <ng-template #substitution>
+    <svg width="16" height="16" viewBox="0 0 1024 1024" fill="#006dcc" style="min-width: 16px; display: inline-block;">
+      <path d="M230.912 526.816c-10.272-20.352-16.224-49.632-16.224-73.952 0-83.136 67.552-156.992 150.72-156.992h308.704v134.368l258.176-167.36-258.176-167.424v119.328h-308.704c-133.344 0-241.792 109.76-241.792 243.072 0 42.592 11.104 83.232 30.592 118.048l76.704-49.088zM793.056 497.184c10.304 20.416 16.224 49.696 16.224 74.016 0 83.104-67.552 156.992-150.656 156.992h-308.8v-134.432l-258.144 167.424 258.144 167.36v-119.264h308.8c133.28 0 241.76-109.76 241.76-243.072 0-42.624-11.168-83.232-30.624-118.048l-76.704 49.024z"></path>
+    </svg>
+  </ng-template>
+  <ng-template #second_yellow_card>
+    <svg width="16" height="16" viewBox="180 180 680 680" fill="#404040" style="min-width: 16px; display: inline-block;">
+      <path fill="#ecaa02" d="M243.2 275.2h428.8v588.8h-428.8v-588.8z"></path>
+      <path fill="#a72018" d="M352 160h428.8v588.8h-428.8v-588.8z"></path>
+    </svg>
+  </ng-template>
+  <ng-template #missed_penalty>
+    <svg width="16" height="16" viewBox="0 0 1024 1024" fill="#c1272d" style="min-width: 16px; display: inline-block;">
+      <path d="M687.904 786.496l-110.976-105.28 110.912-105.12-61.472-64.832-114.368 108.352-114.368-108.352-61.472 64.832 110.912 105.12-110.912 105.28 61.472 64.864 114.368-108.48 114.368 108.48zM116.352 162.912v349.088h93.12v-256h605.056v256h93.12v-349.088z"></path>
+    </svg>
+  </ng-template>
+  <ng-template #var_interview>
+    <svg width="16" height="16" viewBox="180 180 680 680" fill="#404040" style="min-width: 16px; display: inline-block;">
+      <path d="M24.7,15.9H23v3.6H21v-10h3.7c1.2,0,2.1,0.3,2.7,0.8s1,1.3,1,2.2c0,0.7-0.1,1.2-0.4,1.7 c-0.3,0.5-0.7,0.8-1.3,1.1l2.2,4.1v0.1h-2.2L24.7,15.9z M23,14.3h1.7c0.5,0,0.9-0.1,1.2-0.4s0.4-0.6,0.4-1.1c0-0.5-0.1-0.8-0.4-1.1 c-0.3-0.3-0.7-0.4-1.2-0.4H23V14.3z"></path>
+    </svg>
+  </ng-template>
+  <ng-template #own_goal>
+    <svg width="16" height="16" viewBox="0 0 1050 1024" fill="#c1272d" style="min-width: 16px; display: inline-block;">
+      <path d="M208.928 512.352c-107.904 107.936-107.904 283.52 0 391.456s283.52 107.936 391.392 0c107.904-107.936 107.904-283.52 0-391.456-107.872-107.872-283.488-107.872-391.392 0zM556.256 859.552c-67.328 67.36-159.584 80.32-240.096 39.008l17.44-41.952-68.096-68.192-42.112 17.44c-41.248-80.512-28.224-181.92 39.136-249.28 67.36-67.296 159.552-80.352 240.064-39.072l-17.248 41.44 68.16 68.224 41.632-17.312c41.536 80.544 28.672 182.208-38.88 249.696zM419.744 723.168l-23.168 107.104 90.272 34.848 74.88-74.848-35.936-91.264zM252.288 625.248l37.184 88.608 102.336-18.624 18.88-101.92-88.864-37.568zM895.744 343.168c-13.536-32.032-32.928-60.768-57.6-85.44-24.704-24.608-88.128-78.528-190.24-78.528h-314.752v-122.016l-233.28 166.24 233.28 166.176v-108.032h314.752c88.096 0 168.096 70.56 168.096 168.416 0 63.264-26.816 110.624-78.016 142.016 0 0 28.64 93.504 32 92 32.032-13.504 43.648-21.376 68.32-46.048 24.64-24.64 43.936-53.408 57.504-85.44 13.984-33.088 21.152-68.288 21.152-104.64 0.032-36.288-7.2-71.488-21.216-104.704z"></path>
+    </svg>
+  </ng-template>
+  <ng-template #red_card>
+    <svg width="16" height="14" viewBox="0 0 6 8" fill="#c1272d" style="margin-top: 1px;">
+      <rect x="0" y="0" width="6" height="8" rx="1" ry="1"></rect>
+    </svg>
+  </ng-template>
+  <ng-template #period>
+    <i nz-icon nzType="clock-circle" nzTheme="outline"></i>
+  </ng-template>
+  <ng-template #match_ended>
+    <i nz-icon nzType="clock-circle" nzTheme="fill"></i>
+  </ng-template>
+</nz-card>
