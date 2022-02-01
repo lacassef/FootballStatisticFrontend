@@ -1,4 +1,4 @@
-<div class="last_matches_widget">
+<div class="last_matches_widget" *ngIf="home&&away">
   <div class="row">
     <nz-table [nzPageSize]="5" nzSize="small" #homeTable [nzData]="home">
       <tbody>
@@ -18,3 +18,4 @@
     </nz-table>
   </div>
 </div>
+<nz-empty *ngIf="!(home&&away)"></nz-empty>

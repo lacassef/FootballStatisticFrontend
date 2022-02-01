@@ -14,7 +14,7 @@
       <nz-tab nzTitle="Performance" *ngIf="!(match.live.period===-90)||(match.status === 0)">
         <app-team-performance [match]="match"></app-team-performance>
       </nz-tab>
-      <nz-tab *ngIf="match.hasLines" nzTitle="Jogadores">
+      <nz-tab nzTitle="Jogadores">
         <app-players-list [match]="match"></app-players-list>
       </nz-tab>
       <nz-tab nzTitle="Ultimos jogos" *ngIf="!(match.live.period===-90)">

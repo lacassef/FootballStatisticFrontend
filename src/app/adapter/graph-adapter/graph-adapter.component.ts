@@ -3,6 +3,7 @@ import {ScheduleGraph} from "../../model/schedule-graph";
 import {ChartConfiguration, ChartData, ChartType} from "chart.js";
 import {BackendService} from "../../backend.service";
 import {Schedule} from "../../model/schedule";
+import {interval, Subscription} from "rxjs";
 
 @Component({
   selector: 'app-graph-adapter',
@@ -17,6 +18,10 @@ export class GraphAdapterComponent implements OnInit {
         this.graph = ok
         this.putGraph()
         this.none = false
+        // if(!(match.status==100||match.status==120||match.status==110||match.status==0))
+        //   this.checkNewValues = this.timer.subscribe(
+        //     ok => this.checkValue()
+        //   )
       },
       () => {
         this.none = true
@@ -26,6 +31,8 @@ export class GraphAdapterComponent implements OnInit {
     this.matchw = match
   }
 
+  timer = interval(25000)
+  checkNewValues: Subscription | undefined
   matchw: Schedule | undefined
   graph: ScheduleGraph | undefined
   none = true
@@ -97,5 +104,18 @@ export class GraphAdapterComponent implements OnInit {
         { data: this.getPoints(false), label:  this.matchw?.away.shortName}
       ]
     };
+  }
+
+  checkValue(){
+    if(this.matchw) this.http.getMatchGraph(this.matchw.id).subscribe(
+      ok => {
+        this.graph = ok
+        this.putGraph()
+        this.none = false
+      },
+      () => {
+        this.none = true
+      }
+    )
   }
 }

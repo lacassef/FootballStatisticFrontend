@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Schedule} from "../../model/schedule";
 import {BackendService} from "../../backend.service";
 import {playersItem, ScheduleLine} from "../../model/schedule-line";
+import {sum} from "ng-zorro-antd/core/util";
 
 @Component({
   selector: 'app-players-list',
@@ -33,13 +34,14 @@ export class PlayersListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getLines(players: Array<playersItem>, formation: string): Array<playersItem[]>{
+  getLines(players: Array<playersItem>, lNumbers: number[]): Array<playersItem[]>{
     let lines: Array<playersItem[]> = []
-    let lNumber = (formation.match(/,/g) || []).length+1
-    for (let i = 0; i < lNumber; i++) {
-
+    for (let i = 0; i < lNumbers.length; i++) {
+      lines.push(
+        players.slice(sum(lNumbers.slice(0, i)), sum(lNumbers.slice(0, i)) + lNumbers[i])
+      )
     }
-
+    console.log(lines)
     return lines
   }
   getSubstitutes(players: Array<playersItem>): playersItem[] {

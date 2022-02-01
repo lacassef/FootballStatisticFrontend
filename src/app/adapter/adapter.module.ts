@@ -17,12 +17,13 @@ import { PlayerAdapterComponent } from './player-adapter/player-adapter.componen
         StatsPeriodAdapterComponent,
         PlayerAdapterComponent
     ],
-    exports: [
-        ScheduleAdapterComponent,
-        GraphAdapterComponent,
-        IncidentAdapterComponent,
-        StatsPeriodAdapterComponent
-    ],
+  exports: [
+    ScheduleAdapterComponent,
+    GraphAdapterComponent,
+    IncidentAdapterComponent,
+    StatsPeriodAdapterComponent,
+    PlayerAdapterComponent
+  ],
     imports: [
         CommonModule,
         SharedModule

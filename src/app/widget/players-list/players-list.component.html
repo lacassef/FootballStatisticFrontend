@@ -1,13 +1,35 @@
-<nz-card *ngIf="line">
-  <div class="players_container">
-    <div><span style="font-size: small">Formações {{line.confirmed?'':'não'}} confirmadas</span></div>
-    <div class="teams">
-      <nz-card class="team">
-        <div>{{line.home.formation}}</div>
-      </nz-card>
-      <nz-card class="team">
-        <div>{{line.away.formation}}</div>
-      </nz-card>
-    </div>
-  </div>
+<nz-card *ngIf="line&&matchw" [nzLoading]="!line"
+         [nzTitle]="'Formações '+(line.confirmed?'':'não')+' confirmadas'"
+         style="width: 100%">
+  <nz-tabset nzType="card">
+    <nz-tab nzTitle="{{matchw.home.shortName}}">
+      <div nz-col nzSpan="24">
+        <div nz-row>
+          <div nz-col nzSpan="24"><span style="font-size: small">Formação: {{line.home.formation}}</span></div>
+        </div>
+        <nz-card>
+          <div nz-row *ngFor="let row of getLines(line.home.players, line.home.lines)">
+            <div nz-col nzSpan="{{24/row.length}}" *ngFor="let player of row">
+              <app-player-adapter [player]="player" style="justify-content: center"></app-player-adapter>
+            </div>
+          </div>
+        </nz-card>
+      </div>
+    </nz-tab>
+    <nz-tab nzTitle="{{matchw.away.shortName}}">
+      <div nz-col nzSpan="24">
+        <div nz-row>
+          <div nz-col nzSpan="24"><span style="font-size: small">Formação: {{line.away.formation}}</span></div>
+        </div>
+        <nz-card>
+          <div nz-row *ngFor="let row of getLines(line.away.players, line.away.lines)">
+            <div nz-col nzSpan="{{24/row.length}}" *ngFor="let player of row">
+              <app-player-adapter [player]="player" style="justify-content: center"></app-player-adapter>
+            </div>
+          </div>
+        </nz-card>
+      </div>
+    </nz-tab>
+  </nz-tabset>
 </nz-card>
+<nz-empty *ngIf="!(line&&matchw)"></nz-empty>
