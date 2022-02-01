@@ -1,6 +1,6 @@
 <div class="last_matches_widget" *ngIf="home&&away">
   <div class="row">
-    <nz-table [nzPageSize]="5" nzSize="small" #homeTable [nzData]="home">
+    <nz-table [nzPageSize]="5" nzSize="small" #homeTable [nzData]="home.reverse()">
       <tbody>
       <tr *ngFor="let data of homeTable.data">
         <td><app-schedule-adapter [schedule]="data"></app-schedule-adapter></td>
@@ -9,7 +9,7 @@
     </nz-table>
   </div>
   <div class="row">
-    <nz-table [nzPageSize]="5" nzSize="small" #awayTable [nzData]="away">
+    <nz-table [nzPageSize]="5" nzSize="small" #awayTable [nzData]="away.reverse()">
       <tbody>
       <tr *ngFor="let data of awayTable.data">
         <td><app-schedule-adapter [schedule]="data"></app-schedule-adapter></td>

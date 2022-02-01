@@ -11,6 +11,7 @@ import {PlayerStatistics} from "./model/player-statistics";
 import {PlayerLastRatings} from "./model/player-last-ratings";
 import {PlayerAttributes} from "./model/player-attributes";
 import {LeagueStandings} from "./model/league-standings";
+import {PeriodsBet} from "./model/periods-bet";
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,7 @@ export class BackendService {
   //endpoints
   private matches = '/api/matches'
   private team = '/api/team'
+  private bet = '/api/betting'
   private player = '/api/player'
   private league = '/api/league'
 
@@ -86,5 +88,11 @@ export class BackendService {
   }
   getLeagueStandingsAway(tid: number, sid: number): Observable<LeagueStandings>{
     return this.http.get<LeagueStandings>( `${this.league}/${tid}/${sid}/standings/away`)
+  }
+
+  //@tbetting_controller
+
+  getTeamBettingPeriods(id: number): Observable<PeriodsBet>{
+    return this.http.get<PeriodsBet>( `${this.bet}/${id}/periods`)
   }
 }

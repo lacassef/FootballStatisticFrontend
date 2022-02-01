@@ -24,7 +24,7 @@
         <app-head-matches [match]="match"></app-head-matches>
       </nz-tab>
       <nz-tab *ngIf="!(match.live.period===-90)" nzTitle="Aposta">
-
+        <app-betting-periods [match]="match"></app-betting-periods>
       </nz-tab>
     </nz-tabset>
   </div>

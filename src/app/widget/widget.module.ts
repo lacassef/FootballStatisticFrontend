@@ -11,6 +11,7 @@ import { HeadMatchesComponent } from './head-matches/head-matches.component';
 import { MatchStatisticsComponent } from './match-statistics/match-statistics.component';
 import { PlayersListComponent } from './players-list/players-list.component';
 import { TeamPerformanceComponent } from './team-performance/team-performance.component';
+import { BettingPeriodsComponent } from './betting-periods/betting-periods.component';
 
 
 
@@ -24,18 +25,20 @@ import { TeamPerformanceComponent } from './team-performance/team-performance.co
         HeadMatchesComponent,
         MatchStatisticsComponent,
         PlayersListComponent,
-        TeamPerformanceComponent
+        TeamPerformanceComponent,
+        BettingPeriodsComponent
     ],
-  exports: [
-    LeagueListComponent,
-    MatchHeaderComponent,
-    MatchDetailsComponent,
-    LastMatchesComponent,
-    HeadMatchesComponent,
-    MatchStatisticsComponent,
-    TeamPerformanceComponent,
-    PlayersListComponent
-  ],
+    exports: [
+        LeagueListComponent,
+        MatchHeaderComponent,
+        MatchDetailsComponent,
+        LastMatchesComponent,
+        HeadMatchesComponent,
+        MatchStatisticsComponent,
+        TeamPerformanceComponent,
+        PlayersListComponent,
+        BettingPeriodsComponent
+    ],
   imports: [
     CommonModule,
     SharedModule,
