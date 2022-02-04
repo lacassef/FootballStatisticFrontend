@@ -15,13 +15,13 @@
         <app-team-performance [match]="match"></app-team-performance>
       </nz-tab>
       <nz-tab nzTitle="Jogadores">
-        <app-players-list (playerIClicked)="showModalPlayer($event)" [match]="match"></app-players-list>
+        <app-players-list [match]="match"></app-players-list>
       </nz-tab>
       <nz-tab nzTitle="Ultimos jogos" *ngIf="!(match.live.period===-90)">
-        <app-last-matches (matchIsSelected)="showModalMatch($event)" [match]="match"></app-last-matches>
+        <app-last-matches [match]="match"></app-last-matches>
       </nz-tab>
       <nz-tab nzTitle="Confrontos" *ngIf="!(match.live.period===-90)">
-        <app-head-matches (matchIsSelected)="showModalMatch($event)" [match]="match"></app-head-matches>
+        <app-head-matches [match]="match"></app-head-matches>
       </nz-tab>
       <nz-tab *ngIf="!(match.live.period===-90)" nzTitle="Aposta">
         <app-betting-periods [match]="match"></app-betting-periods>

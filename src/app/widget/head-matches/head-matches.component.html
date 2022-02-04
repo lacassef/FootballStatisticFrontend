@@ -2,7 +2,7 @@
   <nz-table style="width: 350px; align-self: center" [nzPageSize]="5" nzSize="small" #homeTable [nzData]="head">
     <tbody>
     <tr *ngFor="let data of homeTable.data">
-      <td><app-schedule-adapter [schedule]="data"></app-schedule-adapter></td>
+      <td><app-schedule-adapter (matchIsSelected)="emitEvent($event)" [schedule]="data"></app-schedule-adapter></td>
     </tr>
     </tbody>
   </nz-table>

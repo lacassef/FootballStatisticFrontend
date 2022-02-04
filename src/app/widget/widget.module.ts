@@ -12,6 +12,8 @@ import { MatchStatisticsComponent } from './match-statistics/match-statistics.co
 import { PlayersListComponent } from './players-list/players-list.component';
 import { TeamPerformanceComponent } from './team-performance/team-performance.component';
 import { BettingPeriodsComponent } from './betting-periods/betting-periods.component';
+import { MatchModalComponent } from './match-modal/match-modal.component';
+import { PlayerPerformanceComponent } from './player-performance/player-performance.component';
 
 
 
@@ -26,7 +28,9 @@ import { BettingPeriodsComponent } from './betting-periods/betting-periods.compo
         MatchStatisticsComponent,
         PlayersListComponent,
         TeamPerformanceComponent,
-        BettingPeriodsComponent
+        BettingPeriodsComponent,
+        MatchModalComponent,
+        PlayerPerformanceComponent
     ],
     exports: [
         LeagueListComponent,
@@ -37,7 +41,8 @@ import { BettingPeriodsComponent } from './betting-periods/betting-periods.compo
         MatchStatisticsComponent,
         TeamPerformanceComponent,
         PlayersListComponent,
-        BettingPeriodsComponent
+        BettingPeriodsComponent,
+        SchedulesListComponent
     ],
   imports: [
     CommonModule,

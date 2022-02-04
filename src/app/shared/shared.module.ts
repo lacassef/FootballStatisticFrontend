@@ -20,6 +20,7 @@ import {NzGridModule} from "ng-zorro-antd/grid";
 import {NzTabsModule} from "ng-zorro-antd/tabs";
 import {NzTimelineModule} from "ng-zorro-antd/timeline";
 import {NzEmptyModule} from "ng-zorro-antd/empty";
+import {NzModalModule} from "ng-zorro-antd/modal";
 
 
 
@@ -46,7 +47,8 @@ import {NzEmptyModule} from "ng-zorro-antd/empty";
     NzGridModule,
     NzTabsModule,
     NzTimelineModule,
-    NzEmptyModule
+    NzEmptyModule,
+    NzModalModule
   ],
   exports: [
     NzLayoutModule,
@@ -68,7 +70,8 @@ import {NzEmptyModule} from "ng-zorro-antd/empty";
     NzGridModule,
     NzTabsModule,
     NzTimelineModule,
-    NzEmptyModule
+    NzEmptyModule,
+    NzModalModule
   ],
 })
 export class SharedModule { }

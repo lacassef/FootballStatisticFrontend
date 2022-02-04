@@ -1,0 +1,11 @@
+.match_content{
+  display: flex;
+  flex-direction: column;
+  width: 650px;
+  padding: 24px;
+  background: #fff;
+  text-align: center;
+}
+/*.inner-content {*/
+/*  */
+/*}*/

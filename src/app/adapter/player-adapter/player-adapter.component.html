@@ -1,3 +1,13 @@
-<div *ngIf="player" class="player_container">
-  {{player.shirtNumber}}<br>{{player.shortName}}<br>{{player.position}}
+<div *ngIf="player">
+  <nz-card nzSize="small" class="player_container" (click)="playerClicked(player)">
+    <nz-card-meta [nzTitle]="title" [nzDescription]="desc"></nz-card-meta>
+  </nz-card>
+  <ng-template #title>
+    <small *ngIf="player.shirtNumber>0">{{player.shirtNumber}}</small><br>
+    <small>{{player.shortName}}</small>
+  </ng-template>
+  <ng-template #desc>
+    <span *ngIf="player.statistics.rating>0">{{player.statistics.rating}} |</span>
+    <span> {{getPosition(player.position)}}</span>
+  </ng-template>
 </div>

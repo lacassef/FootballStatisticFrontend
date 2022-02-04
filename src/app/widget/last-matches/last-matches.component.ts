@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Schedule} from "../../model/schedule";
 import {ScheduleGraph} from "../../model/schedule-graph";
 import {BackendService} from "../../backend.service";
@@ -37,6 +37,11 @@ export class LastMatchesComponent implements OnInit {
   home: Schedule[] = []
   away: Schedule[] = []
   none = true
+
+  @Output() matchIsSelected: EventEmitter<number> = new EventEmitter<number>()
+  emitEvent(id: number){
+    this.matchIsSelected.emit(id)
+  }
 
   constructor(private http: BackendService) { }
 

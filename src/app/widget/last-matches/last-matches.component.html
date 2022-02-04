@@ -3,7 +3,8 @@
     <nz-table [nzPageSize]="5" nzSize="small" #homeTable [nzData]="home.reverse()">
       <tbody>
       <tr *ngFor="let data of homeTable.data">
-        <td><app-schedule-adapter [schedule]="data"></app-schedule-adapter></td>
+        <td><app-schedule-adapter (matchIsSelected)="emitEvent($event)" [schedule]="data">
+        </app-schedule-adapter></td>
       </tr>
       </tbody>
     </nz-table>
@@ -12,7 +13,8 @@
     <nz-table [nzPageSize]="5" nzSize="small" #awayTable [nzData]="away.reverse()">
       <tbody>
       <tr *ngFor="let data of awayTable.data">
-        <td><app-schedule-adapter [schedule]="data"></app-schedule-adapter></td>
+        <td><app-schedule-adapter [schedule]="data" (matchIsSelected)="emitEvent($event)">
+        </app-schedule-adapter></td>
       </tr>
       </tbody>
     </nz-table>

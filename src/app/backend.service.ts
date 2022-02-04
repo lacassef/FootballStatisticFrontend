@@ -75,7 +75,7 @@ export class BackendService {
     return this.http.get<PlayerLastRatings[]>( `${this.player}/${id}/${tid}/${sid}/ratings`)
   }
   getPlayerAttributes(id: number, position: string): Observable<PlayerAttributes>{
-    return this.http.get<PlayerAttributes>( `${this.player}/${id}/${position}/ratings`)
+    return this.http.get<PlayerAttributes>( `${this.player}/${id}/${position}/attributes`)
   }
 
   //@league_controller

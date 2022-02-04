@@ -1,4 +1,4 @@
-<div class="schedule_content" *ngIf="schedule">
+<div class="schedule_content" *ngIf="schedule" (click)="emitEvent(schedule.id)">
   <div class="datetime">
     <div *ngIf="schedule.status!=-1000">{{schedule.date}}</div>
     <div *ngIf="schedule.status==100" style="color: rgba(128,128,128,0.6)">{{schedule.time}}</div>

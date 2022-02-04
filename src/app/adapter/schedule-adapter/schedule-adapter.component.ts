@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {Schedule} from "../../model/schedule";
 import {interval, Subscription} from "rxjs";
 
@@ -13,6 +13,10 @@ export class ScheduleAdapterComponent implements OnInit, OnDestroy {
   current = "0"
   agenda: Subscription| undefined
   timer = interval(1000)
+  @Output() matchIsSelected: EventEmitter<number> = new EventEmitter<number>()
+  emitEvent(id: number){
+    this.matchIsSelected.emit(id)
+  }
   constructor() { }
 
   ngOnInit(): void {

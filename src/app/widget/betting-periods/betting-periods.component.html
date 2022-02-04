@@ -1,0 +1,8 @@
+<div *ngIf="matchw">
+  <nz-card *ngIf="home" nzTitle="{{matchw.home.shortName}}">
+    <app-bet-periods-adapter [periods]="home"></app-bet-periods-adapter>
+  </nz-card>
+  <nz-card *ngIf="away" nzTitle="{{matchw.away.shortName}}">
+    <app-bet-periods-adapter [periods]="away"></app-bet-periods-adapter>
+  </nz-card>
+</div>

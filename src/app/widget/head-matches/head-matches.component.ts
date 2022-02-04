@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Schedule} from "../../model/schedule";
 import {BackendService} from "../../backend.service";
 
@@ -23,6 +23,10 @@ export class HeadMatchesComponent implements OnInit {
     this.matchw = match
   }
 
+  @Output() matchIsSelected: EventEmitter<number> = new EventEmitter<number>()
+  emitEvent(id: number){
+    this.matchIsSelected.emit(id)
+  }
   matchw: Schedule | undefined
   head: Schedule[] = []
   none = true

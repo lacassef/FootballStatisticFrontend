@@ -3,28 +3,80 @@
          style="width: 100%">
   <nz-tabset nzType="card">
     <nz-tab nzTitle="{{matchw.home.shortName}}">
-      <div nz-col nzSpan="24">
+      <div>
         <div nz-row>
           <div nz-col nzSpan="24"><span style="font-size: small">Formação: {{line.home.formation}}</span></div>
         </div>
         <nz-card>
-          <div nz-row *ngFor="let row of getLines(line.home.players, line.home.lines)">
+          <div nz-row *ngFor="let row of linesH">
             <div nz-col nzSpan="{{24/row.length}}" *ngFor="let player of row">
-              <app-player-adapter [player]="player" style="justify-content: center"></app-player-adapter>
+              <app-player-adapter  (playerIsClicked)="playerIsClicked($event)" [match]="matchw" [player]="player" style="justify-content: center"></app-player-adapter>
+            </div>
+          </div>
+        </nz-card>
+      </div>
+      <div *ngIf="getSubstitutes(line.home.players).length>0">
+        <div nz-row>
+          <div nz-col nzSpan="24"><span style="font-size: small">Substitutos</span></div>
+        </div>
+        <nz-card>
+          <div nz-row>
+            <div nz-col *ngFor="let row of linesHSub"
+                 nzSpan="{{24/5}}">
+              <app-player-adapter (playerIsClicked)="playerIsClicked($event)" [match]="matchw" [player]="row" style="justify-content: center"></app-player-adapter>
+            </div>
+          </div>
+        </nz-card>
+      </div>
+      <div *ngIf="line.home.missingPlayers.length>0">
+        <div nz-row>
+          <div nz-col nzSpan="24"><span style="font-size: small">Indisponiveis</span></div>
+        </div>
+        <nz-card>
+          <div nz-row>
+            <div nz-col *ngFor="let row of line.home.missingPlayers"
+                 nzSpan="{{24/5}}">
+              <app-player-adapter (playerIsClicked)="playerIsClicked($event)" [match]="matchw" [player]="row" style="justify-content: center"></app-player-adapter>
             </div>
           </div>
         </nz-card>
       </div>
     </nz-tab>
     <nz-tab nzTitle="{{matchw.away.shortName}}">
-      <div nz-col nzSpan="24">
+      <div>
         <div nz-row>
           <div nz-col nzSpan="24"><span style="font-size: small">Formação: {{line.away.formation}}</span></div>
         </div>
         <nz-card>
-          <div nz-row *ngFor="let row of getLines(line.away.players, line.away.lines)">
+          <div nz-row *ngFor="let row of linesA">
             <div nz-col nzSpan="{{24/row.length}}" *ngFor="let player of row">
-              <app-player-adapter [player]="player" style="justify-content: center"></app-player-adapter>
+              <app-player-adapter  (playerIsClicked)="playerIsClicked($event)" [match]="matchw" [player]="player" style="justify-content: center"></app-player-adapter>
+            </div>
+          </div>
+        </nz-card>
+      </div>
+      <div *ngIf="getSubstitutes(line.away.players).length>0">
+        <div nz-row>
+          <div nz-col nzSpan="24"><span style="font-size: small">Substitutos</span></div>
+        </div>
+        <nz-card>
+          <div nz-row>
+            <div nz-col *ngFor="let row of linesASub"
+                 nzSpan="{{24/5}}">
+              <app-player-adapter (playerIsClicked)="playerIsClicked($event)" [match]="matchw" [player]="row" style="justify-content: center"></app-player-adapter>
+            </div>
+          </div>
+        </nz-card>
+      </div>
+      <div *ngIf="line.away.missingPlayers.length>0">
+        <div nz-row>
+          <div nz-col nzSpan="24"><span style="font-size: small">Indisponiveis</span></div>
+        </div>
+        <nz-card>
+          <div nz-row>
+            <div nz-col *ngFor="let row of line.away.missingPlayers"
+                 nzSpan="{{24/5}}">
+              <app-player-adapter (playerIsClicked)="playerIsClicked($event)" [match]="matchw" [player]="row" style="justify-content: center"></app-player-adapter>
             </div>
           </div>
         </nz-card>

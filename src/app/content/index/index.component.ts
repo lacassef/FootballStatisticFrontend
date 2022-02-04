@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Schedule, tournament} from "../../model/schedule";
+import {NzModalService} from "ng-zorro-antd/modal";
+import {MatchModalComponent} from "../../widget/match-modal/match-modal.component";
 
 @Component({
   selector: 'app-index',
