@@ -1,0 +1,1003 @@
+<div *ngIf="player && match">
+  <nz-card>
+    <nz-card-meta
+      [nzAvatar]="avatarTemplate"
+      nzTitle="{{player.name}}"
+      nzDescription="{{useOwnPerformance?player.statistics.rating:(performance?performance.rating:0)
+      | number: '1.2-2'}} | {{getPosition(player.position)}}"
+    ></nz-card-meta>
+  </nz-card>
+  <nz-card style="text-align: center;" nzTitle="Ultimas classificações" nzSize="small" *ngIf="lastRatings">
+    <div nz-row  nzJustify="center">
+      <div nz-col *ngFor="let i of lastRatings" nzSpan="{{24/lastRatings.length}}">
+      <nz-card style=" width: max-content; margin: auto">
+        {{i.rating}}
+      </nz-card>
+      </div>
+    </div>
+  </nz-card>
+  <nz-card>
+    <div *ngIf="!useOwnPerformance&&performance">
+      <nz-collapse>
+        <nz-collapse-panel nzHeader="Resumo">
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Partidas iniciadas
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.matchesStarted}}/{{performance.appearances}}
+      </span>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Minutos jogados
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.minutesPlayed}}
+      </span>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Equipa da semana
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.totwAppearances}}
+      </span>
+            </div>
+          </div>
+        </nz-collapse-panel>
+        <nz-collapse-panel nzHeader="Goleiro">
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Golos sofridos por 90'
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.goalsConceded*90/performance.minutesPlayed | number: '1.2-2'}}
+      </span>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Jogos sem tomar golos
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.cleanSheet}}
+      </span>
+            </div>
+          </div>
+          <nz-divider></nz-divider>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Golos sofridos na area por 90'
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.goalsConcededInsideTheBox*90/performance.minutesPlayed | number: '1.2-2'}}
+      </span>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Golos sofridos fora da area por 90'
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.goalsConcededOutsideTheBox*90/performance.minutesPlayed | number: '1.2-2'}}
+      </span>
+            </div>
+          </div>
+          <nz-divider></nz-divider>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Penaltis defendidos
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.penaltySave}}/{{performance.penaltyFaced}}
+      </span>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+         Defesas por 90'
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.saves*90/performance.minutesPlayed | number: '1.2-2'}}
+      </span>
+            </div>
+          </div>
+          <nz-divider></nz-divider>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Defesas na area por 90'
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.savedShotsFromInsideTheBox*90/performance.minutesPlayed | number: '1.2-2'}}
+      </span>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Defesas fora da area por 90'
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.savedShotsFromOutsideTheBox*90/performance.minutesPlayed | number: '1.2-2'}}
+      </span>
+            </div>
+          </div>
+          <nz-divider></nz-divider>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Saidas do gol bem sucedidas
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.successfulRunsOut}}/{{performance.runsOut}}
+      </span>
+            </div>
+          </div>
+        </nz-collapse-panel>
+        <nz-collapse-panel nzHeader="Finalização">
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Golos marcados
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.goals}}
+      </span>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Frequencia de golos
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.scoringFrequency}}
+      </span>
+            </div>
+          </div>
+          <nz-divider></nz-divider>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Golos de cabeceio
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.headedGoals}}
+      </span>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Golos de penalty
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.penaltyGoals}}/{{performance.penaltiesTaken}}
+      </span>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Golos de falta
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.freeKickGoal}}
+      </span>
+            </div>
+          </div>
+          <nz-divider></nz-divider>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Golos na area
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.goalsFromInsideTheBox}}
+      </span>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Golos fora da area
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.goalsFromOutsideTheBox}}
+      </span>
+            </div>
+          </div>
+          <nz-divider></nz-divider>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Grandes chances criadas
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.bigChancesCreated}}
+      </span>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Grandes chances falhadas
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.bigChancesMissed}}
+      </span>
+            </div>
+          </div>
+          <nz-divider></nz-divider>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Chutes por 90'
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.totalShots*90/performance.minutesPlayed | number: '1.2-2'}}
+      </span>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Chutes enquadrados por 90'
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.shotsOnTarget*90/performance.minutesPlayed | number: '1.2-2'}}
+      </span>
+            </div>
+          </div>
+          <nz-divider></nz-divider>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Chutes de bolas paradas
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.shotFromSetPiece}}
+      </span>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Chutes na area
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.shotsFromInsideTheBox}}
+      </span>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Chutes fora da area
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.shotsFromOutsideTheBox}}
+      </span>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Chutes ao poste
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.hitWoodwork}}
+      </span>
+            </div>
+          </div>
+        </nz-collapse-panel>
+        <nz-collapse-panel nzHeader="Transição ofensiva">
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Assistencias
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.assists}}/{{performance.totalAttemptAssist}}
+      </span>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Passes para assistencia
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.passToAssist}}
+      </span>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Passes-chave por 90'
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.keyPasses}}
+      </span>
+            </div>
+          </div>
+          <nz-divider></nz-divider>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Cruzamentos
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.accurateCrosses}}/{{performance.totalCross}}
+      </span>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Passe em profundidade
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.accurateChippedPasses}}/{{performance.totalChippedPasses}}
+      </span>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Bolas longas
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.accurateLongBalls}}/{{performance.totalLongBalls}}
+      </span>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Passes certos no terço ofensivo por 90'
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.accurateFinalThirdPasses*90/performance.minutesPlayed | number: '1.2-2'}}
+      </span>
+            </div>
+          </div>
+          <nz-divider></nz-divider>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Dribles bem-sucedidos
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.successfulDribbles}}
+      </span>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Fora de jogo
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.offsides}}
+      </span>
+            </div>
+          </div>
+        </nz-collapse-panel>
+        <nz-collapse-panel nzHeader="Posse de bola">
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Toques por 90'
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.touches*90/performance.minutesPlayed | number: '1.2-2'}}
+      </span>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Passes por 90'
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.totalPasses*90/performance.minutesPlayed | number: '1.2-2'}}
+      </span>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Passes certos por 90'
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.accuratePasses*90/performance.minutesPlayed | number: '1.2-2'}}
+      </span>
+            </div>
+          </div>
+          <nz-divider></nz-divider>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Passes no proprio meio-campo por 90'
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.totalOwnHalfPasses*90/performance.minutesPlayed | number: '1.2-2'}}
+      </span>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Passes certos no proprio meio-campo por 90'
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.accurateOwnHalfPasses*90/performance.minutesPlayed | number: '1.2-2'}}
+      </span>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Passes no meio-campo ofensivo por 90'
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.totalOppositionHalfPasses*90/performance.minutesPlayed | number: '1.2-2'}}
+      </span>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Passes certos no meio-campo ofensivo por 90'
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.accurateOppositionHalfPasses*90/performance.minutesPlayed | number: '1.2-2'}}
+      </span>
+            </div>
+          </div>
+          <nz-divider></nz-divider>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Perda de posse por 90'
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.possessionLost*90/performance.minutesPlayed | number: '1.2-2'}}
+      </span>
+            </div>
+          </div>
+          <nz-divider></nz-divider>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+       Duelos vencidos por 90'
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.totalDuelsWon*90/performance.minutesPlayed | number: '1.2-2'}}
+      </span>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Duelos no solo por 90'
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.groundDuelsWon*90/performance.minutesPlayed | number: '1.2-2'}}
+      </span>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Duelos aereos vencidos por 90'
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.aerialDuelsWon*90/performance.minutesPlayed | number: '1.2-2'}}
+      </span>
+            </div>
+          </div>
+        </nz-collapse-panel>
+        <nz-collapse-panel nzHeader="Recuperação">
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Interceptações por 90'
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.interceptions*90/performance.minutesPlayed | number: '1.2-2'}}
+      </span>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Desarmes por 90'
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.tackles*90/performance.minutesPlayed | number: '1.2-2'}}
+      </span>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Desarmes vencidos por 90'
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.tacklesWon*90/performance.minutesPlayed | number: '1.2-2'}}
+      </span>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+         Cortes por 90'
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.clearances*90/performance.minutesPlayed | number: '1.2-2'}}
+      </span>
+            </div>
+          </div>
+          <nz-divider></nz-divider>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Recuperações no terço ofensivo por 90'
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.possessionWonAttThird*90/performance.minutesPlayed | number: '1.2-2'}}
+      </span>
+            </div>
+          </div>
+          <nz-divider></nz-divider>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Faltas por 90'
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.fouls*90/performance.minutesPlayed | number: '1.2-2'}}
+      </span>
+            </div>
+          </div>
+          <nz-divider></nz-divider>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Erros levando a chute
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.errorLeadToShot}}
+      </span>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Erros levando a golo
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.errorLeadToGoal}}
+      </span>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Penalties cometidos
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.penaltyConceded}}
+      </span>
+            </div>
+          </div>
+          <nz-divider></nz-divider>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Cartões amarelos por 90'
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.yellowCards*90/performance.minutesPlayed | number: '1.2-2'}}
+      </span>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Cartões vermelhos por acumulação
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.yellowRedCards}}
+      </span>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Cartões vermelhos
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.redCards}}
+      </span>
+            </div>
+          </div>
+          <nz-divider></nz-divider>
+          <div nz-row>
+            <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Dribles sofridos
+      </span>
+            </div>
+            <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{performance.dribbledPast}}
+      </span>
+            </div>
+          </div>
+        </nz-collapse-panel>
+      </nz-collapse>
+    </div>
+    <div *ngIf="useOwnPerformance && player.position!=='G'">
+      <div nz-row *ngIf="player.statistics.minutesPlayed!==0">
+        <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Minutos jogados
+      </span>
+        </div>
+        <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{player.statistics.minutesPlayed}}
+      </span>
+        </div>
+      </div>
+      <nz-divider></nz-divider>
+      <div nz-row *ngIf="player.statistics.goals!==0">
+        <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Golos
+      </span>
+        </div>
+        <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{player.statistics.goals}}
+      </span>
+        </div>
+      </div>
+      <div nz-row *ngIf="player.statistics.saves!==0">
+        <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Deesas
+      </span>
+        </div>
+        <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{player.statistics.saves}}
+      </span>
+        </div>
+      </div>
+      <div nz-row *ngIf="player.statistics.onTargetScoringAttempt!==0">
+        <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Tentativas de golo ao alvo
+      </span>
+        </div>
+        <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{player.statistics.onTargetScoringAttempt}}
+      </span>
+        </div>
+      </div>
+      <div nz-row *ngIf="player.statistics.blockedScoringAttempt!==0">
+        <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Tentativas bloqueadas de golos
+      </span>
+        </div>
+        <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{player.statistics.blockedScoringAttempt}}
+      </span>
+        </div>
+      </div>
+      <div nz-row *ngIf="player.statistics.goalAssist!==0">
+        <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Assistencia
+      </span>
+        </div>
+        <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{player.statistics.goalAssist}}
+      </span>
+        </div>
+      </div>
+      <nz-divider></nz-divider>
+      <div nz-row *ngIf="player.statistics.keyPass!==0">
+        <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Passes-chave
+      </span>
+        </div>
+        <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{player.statistics.keyPass}}
+      </span>
+        </div>
+      </div>
+      <div nz-row *ngIf="player.statistics.totalPass!==0">
+        <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Passes
+      </span>
+        </div>
+        <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{player.statistics.accuratePass}}/{{player.statistics.totalPass}}
+      </span>
+        </div>
+      </div>
+      <div nz-row *ngIf="player.statistics.touches!==0">
+        <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Toques
+      </span>
+        </div>
+        <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{player.statistics.touches}}
+      </span>
+        </div>
+      </div>
+      <nz-divider></nz-divider>
+      <div nz-row *ngIf="player.statistics.totalCross!==0">
+        <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Cruzamento
+      </span>
+        </div>
+        <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{player.statistics.accurateCross}}/{{player.statistics.totalCross}}
+      </span>
+        </div>
+      </div>
+      <div nz-row *ngIf="player.statistics.totalLongBalls!==0">
+        <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Passes longos
+      </span>
+        </div>
+        <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{player.statistics.accurateLongBalls}}/{{player.statistics.totalLongBalls}}
+      </span>
+        </div>
+      </div>
+      <nz-divider></nz-divider>
+      <div nz-row *ngIf="player.statistics.savedShotsFromInsideTheBox!==0">
+        <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Defesas na aerea
+      </span>
+        </div>
+        <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{player.statistics.savedShotsFromInsideTheBox}}
+      </span>
+        </div>
+      </div>
+      <nz-divider></nz-divider>
+      <div nz-row *ngIf="player.statistics.fouls!==0">
+        <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Faltas
+      </span>
+        </div>
+        <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{player.statistics.fouls}}
+      </span>
+        </div>
+      </div>
+      <div nz-row *ngIf="player.statistics.totalTackle!==0">
+        <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Desarme
+      </span>
+        </div>
+        <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{player.statistics.totalTackle}}
+      </span>
+        </div>
+      </div>
+      <div nz-row *ngIf="player.statistics.totalClearance!==0">
+        <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Cortes
+      </span>
+        </div>
+        <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{player.statistics.totalClearance}}
+      </span>
+        </div>
+      </div>
+      <div nz-row *ngIf="player.statistics.interceptionWon!==0">
+        <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Interceptações ganhas
+      </span>
+        </div>
+        <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{player.statistics.interceptionWon}}
+      </span>
+        </div>
+      </div>
+      <nz-divider></nz-divider>
+      <div nz-row *ngIf="player.statistics.duelWon!==0">
+        <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Duelos vencidos
+      </span>
+        </div>
+        <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{player.statistics.duelWon}}
+      </span>
+        </div>
+      </div>
+      <div nz-row *ngIf="player.statistics.aerialWon!==0">
+        <div nz-col nzSpan="18">
+      <span style="font-size: small">
+        Duelos aereos vencidos
+      </span>
+        </div>
+        <div nz-col nzSpan="6">
+      <span style="font-size: small">
+      {{player.statistics.aerialWon}}
+      </span>
+        </div>
+      </div>
+    </div>
+  </nz-card>
+  <ng-template #avatarTemplate>
+    <nz-avatar nzSrc="https://api.sofascore.app/api/v1/player/{{player.id}}/image"></nz-avatar>
+  </ng-template>
+</div>
