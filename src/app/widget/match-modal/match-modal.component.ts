@@ -3,6 +3,8 @@ import {Schedule} from "../../model/schedule";
 import {BackendService} from "../../backend.service";
 import {interval, Subscription} from "rxjs";
 import {NzModalRef, NzModalService} from "ng-zorro-antd/modal";
+import {playersItem} from "../../model/schedule-line";
+import {PlayerPerformanceComponent} from "../player-performance/player-performance.component";
 
 @Component({
   selector: 'app-match-modal',
@@ -34,11 +36,23 @@ export class MatchModalComponent implements OnInit {
   match: Schedule | undefined
   none = true
 
-  constructor(private http: BackendService, private modal: NzModalRef) { }
+  constructor(private http: BackendService, private modal: NzModalRef,
+              private modalService: NzModalService) { }
 
   ngOnInit(): void {
   }
 
+  showModalPlayer($event: playersItem): void {
+    this.modalService.create({
+      nzContent: PlayerPerformanceComponent,
+      nzClosable: true,
+      nzFooter: null,
+      nzKeyboard: true,
+      nzMaskClosable: false,
+      nzComponentParams: {player: $event, match: this.match},
+      // nzWidth: 720
+    });
+  }
   close() {
     this.modal.destroy();
   }

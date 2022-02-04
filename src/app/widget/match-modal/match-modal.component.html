@@ -15,7 +15,7 @@
         <app-team-performance [match]="match"></app-team-performance>
       </nz-tab>
       <nz-tab nzTitle="Jogadores">
-        <app-players-list [match]="match"></app-players-list>
+        <app-players-list (playerIClicked)="showModalPlayer($event)" [match]="match"></app-players-list>
       </nz-tab>
       <nz-tab nzTitle="Ultimos jogos" *ngIf="!(match.live.period===-90)">
         <app-last-matches [match]="match"></app-last-matches>
