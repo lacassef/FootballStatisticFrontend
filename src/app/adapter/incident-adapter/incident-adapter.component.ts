@@ -16,7 +16,7 @@ export class IncidentAdapterComponent implements OnInit {
   @Input() set match(match: Schedule){
     if (match.id > 0) this.http.getMatchIncidents(match.id).subscribe(
       ok => {
-        this.incidents = ok
+        this.incidents = ok.reverse()
         this.none = false
         // if(!(match.status==100||match.status==120||match.status==110||match.status==0))
         //   this.checkNewValues = this.timer.subscribe(

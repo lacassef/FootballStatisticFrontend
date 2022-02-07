@@ -52,7 +52,7 @@ export class PlayerPerformanceComponent implements OnInit {
           .subscribe(ok => this.attributes = ok)
 
         this.backend.getPlayerLastRatings(this.player.id, this.match.tournament.id, this.match.tournament.season)
-          .subscribe(ok => this.lastRatings = ok)
+          .subscribe(ok => this.lastRatings = ok.reverse())
       } else
         this.useOwnPerformance = true
     }

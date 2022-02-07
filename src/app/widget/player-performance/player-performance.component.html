@@ -9,7 +9,7 @@
   <nz-card style="text-align: center;"
            nzTitle="Ultimas classificações" nzSize="small" *ngIf="lastRatings">
     <div nz-row  nzJustify="center">
-      <div nz-col *ngFor="let i of lastRatings.reverse()" nzSpan="{{24/lastRatings.length}}">
+      <div nz-col *ngFor="let i of lastRatings" nzSpan="{{24/lastRatings.length}}">
       <nz-card nz-popover nzPopoverContent="vs {{i.opponent.shortName}}
       ({{i.date}} - {{i.isHome?'Casa':'Fora'}})" [class.bad]="i.rating<6"
                [class.bad_medium]="i.rating>=6 && i.rating<=6.5"

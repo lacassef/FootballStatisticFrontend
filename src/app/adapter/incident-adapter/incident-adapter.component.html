@@ -2,7 +2,7 @@
   <nz-timeline [nzPending]="!(matchw!!.live.period===-90)" [nzReverse]="true" [nzPendingDot]="'Ao vivo'" nzMode="custom">
     <nz-timeline-item
                       [nzDot]="period"></nz-timeline-item>
-    <ng-container *ngFor="let eveht of incidents.reverse()">
+    <ng-container *ngFor="let eveht of incidents">
       <nz-timeline-item *ngIf="eveht.code===0" [nzPosition]="!eveht.isHome?'left':'right'"
                         [nzDot]="goal"><span style="font-size: small">{{eveht.player.name}} {{eveht.time}}</span>'</nz-timeline-item>
       <nz-timeline-item *ngIf="eveht.code===1" [nzPosition]="!eveht.isHome?'left':'right'"
