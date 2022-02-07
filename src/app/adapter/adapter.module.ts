@@ -7,6 +7,7 @@ import { IncidentAdapterComponent } from './incident-adapter/incident-adapter.co
 import { StatsPeriodAdapterComponent } from './stats-period-adapter/stats-period-adapter.component';
 import { PlayerAdapterComponent } from './player-adapter/player-adapter.component';
 import { BetPeriodsAdapterComponent } from './bet-periods-adapter/bet-periods-adapter.component';
+import { PlayerAttributesGraphComponent } from './player-attributes-graph/player-attributes-graph.component';
 
 
 
@@ -17,7 +18,8 @@ import { BetPeriodsAdapterComponent } from './bet-periods-adapter/bet-periods-ad
         IncidentAdapterComponent,
         StatsPeriodAdapterComponent,
         PlayerAdapterComponent,
-        BetPeriodsAdapterComponent
+        BetPeriodsAdapterComponent,
+        PlayerAttributesGraphComponent
     ],
     exports: [
         ScheduleAdapterComponent,
@@ -25,7 +27,8 @@ import { BetPeriodsAdapterComponent } from './bet-periods-adapter/bet-periods-ad
         IncidentAdapterComponent,
         StatsPeriodAdapterComponent,
         PlayerAdapterComponent,
-        BetPeriodsAdapterComponent
+        BetPeriodsAdapterComponent,
+        PlayerAttributesGraphComponent
     ],
     imports: [
         CommonModule,

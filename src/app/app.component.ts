@@ -17,6 +17,8 @@ export class AppComponent implements OnInit, OnDestroy {
   dateSchedules: Schedule[] = []
   timer = interval(60000)
   checkNewMatches: Subscription | undefined
+  timerDate = interval(5*60000)
+  checkDateMatches: Subscription | undefined
   selected = 3
 
 
@@ -31,6 +33,12 @@ export class AppComponent implements OnInit, OnDestroy {
     this.getDateMatches(this.date.getTime())
     this.checkNewMatches = this.timer.subscribe(
       ok => this.retrieveNewMatches()
+    )
+    this.checkDateMatches = this.timerDate.subscribe(
+      ok => {
+        if (this.date.toDateString() === new Date().toDateString())
+          this.getDateMatches(this.date.getTime())
+      }
     )
   }
 

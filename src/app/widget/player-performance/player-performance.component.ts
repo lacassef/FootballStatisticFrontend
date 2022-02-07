@@ -28,26 +28,33 @@ export class PlayerPerformanceComponent implements OnInit {
     this.loadData()
   }
 
-  getPosition(position: string): string{
+  getPosition(position: string = 'A', reason: number=-1): string{
     if(position==='G') return 'Goleiro'
     else if(position==='D') return 'Defesa'
     else if(position==='M') return 'Medio'
     else if(position==='F') return 'Atacante'
+    else if(reason == 13) return 'Suspenso'
+    else if(reason == 1) return 'Lesionado'
+    else if(reason == 3) return 'Suspenso'
+    else if(reason == 0) return 'Seleção'
+    else if(reason == 99) return 'Duvida'
     else return 'Sem posição'
   }
 
   loadData(){
     if(this.player&&this.match){
 
-      if(this.player.statistics.rating === 0) this.backend.getPlayerStatistics(this.player.id, this.match.tournament.id, this.match.tournament.season)
-        .subscribe(ok => this.performance = ok)
-      else this.useOwnPerformance = true
+      if(this.player.statistics.rating === 0) {
+        this.backend.getPlayerStatistics(this.player.id, this.match.tournament.id, this.match.tournament.season)
+          .subscribe(ok => this.performance = ok)
 
-      this.backend.getPlayerAttributes(this.player.id, this.player.position)
-        .subscribe(ok => this.attributes = ok)
+        this.backend.getPlayerAttributes(this.player.id, this.player.position)
+          .subscribe(ok => this.attributes = ok)
 
-      this.backend.getPlayerLastRatings(this.player.id, this.match.tournament.id, this.match.tournament.season)
-        .subscribe(ok => this.lastRatings = ok)
+        this.backend.getPlayerLastRatings(this.player.id, this.match.tournament.id, this.match.tournament.season)
+          .subscribe(ok => this.lastRatings = ok)
+      } else
+        this.useOwnPerformance = true
     }
     else{
       setTimeout(() => this.loadData(), 250);

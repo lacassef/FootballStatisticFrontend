@@ -1,0 +1,18 @@
+.bad{
+  background: rgb(255, 0, 8);
+}
+.bad_medium{
+  background: rgb(234, 167, 67);
+}
+.medium{
+  background: rgb(254, 255, 0);
+}
+.medium_good{
+  background: rgba(208, 255, 0);
+}
+.good{
+  background: #14ff00;
+}
+.excellent{
+  background: #00ffd9;
+}

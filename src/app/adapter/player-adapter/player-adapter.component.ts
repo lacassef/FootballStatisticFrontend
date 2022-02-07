@@ -22,12 +22,28 @@ export class PlayerAdapterComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  getPosition(position: string): string{
+  getPosition(position: string = 'A', reason: number=-1): string{
     if(position==='G') return 'Goleiro'
     else if(position==='D') return 'Defesa'
     else if(position==='M') return 'Medio'
     else if(position==='F') return 'Atacante'
+    else if(reason == 13) return 'Suspenso'
+    else if(reason == 1) return 'Lesionado'
+    else if(reason == 3) return 'Suspenso'
+    else if(reason == 0) return 'Seleção'
+    else if(reason == 99) return 'Duvida'
     else return 'Sem posição'
   }
+  /**
+   * case 13:
+   return "estar suspenso"
+   case 1:
+   return "estar lesionado"
+   case 3:
+   return "estar suspenso"
+   case 99:
+   return "ser duvida"
+   default:
+   return ""**/
 
 }

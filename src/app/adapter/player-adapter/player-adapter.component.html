@@ -6,8 +6,33 @@
     <small *ngIf="player.shirtNumber>0">{{player.shirtNumber}}</small><br>
     <small>{{player.shortName}}</small>
   </ng-template>
-  <ng-template #desc>
-    <span *ngIf="player.statistics.rating>0">{{player.statistics.rating}} |</span>
-    <span> {{getPosition(player.position)}}</span>
+  <ng-template #desc style="text-align: center">
+    <div nz-row nzAlign="middle">
+      <div nz-col nzSpan="6" *ngIf="player.avgRating>0||player.statistics.rating>0">
+      <span style="font-size: small">
+        <span [class.bad]="player.statistics.rating<6"
+              [class.bad_medium]="player.statistics.rating>=6 && player.statistics.rating<=6.5"
+              [class.medium]="player.statistics.rating>=6.5 && player.statistics.rating<7"
+              [class.medium_good]="player.statistics.rating>=7 && player.statistics.rating<8"
+              [class.good]="player.statistics.rating>=8 && player.statistics.rating<9"
+              [class.excellent]="player.statistics.rating>=9"
+          *ngIf="player.statistics.rating>0">{{player.statistics.rating | number: '1.1-1'}}</span>
+        <span
+          [class.bad]="player.avgRating<6"
+          [class.bad_medium]="player.avgRating>=6 && player.avgRating<=6.5"
+          [class.medium]="player.avgRating>=6.5 && player.avgRating<7"
+          [class.medium_good]="player.avgRating>=7 && player.avgRating<8"
+          [class.good]="player.avgRating>=8 && player.avgRating<9"
+          [class.excellent]="player.avgRating>=9"
+          *ngIf="player.avgRating>0&&player.statistics.rating==0">
+      {{player.avgRating| number: '1.1-1'}}</span>
+      </span>
+      </div>
+      <div nz-col [nzSpan]="(player.avgRating>0||player.statistics.rating>0)?18:24">
+      <span style="font-size: small">
+        <span>{{getPosition(player.position, player.missingReason)}}</span>
+      </span>
+      </div>
+    </div>
   </ng-template>
 </div>

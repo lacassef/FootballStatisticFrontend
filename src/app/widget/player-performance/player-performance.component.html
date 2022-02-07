@@ -3,20 +3,30 @@
     <nz-card-meta
       [nzAvatar]="avatarTemplate"
       nzTitle="{{player.name}}"
-      nzDescription="{{useOwnPerformance?player.statistics.rating:(performance?performance.rating:0)
-      | number: '1.2-2'}} | {{getPosition(player.position)}}"
+      [nzDescription]="desc"
     ></nz-card-meta>
   </nz-card>
-  <nz-card style="text-align: center;" nzTitle="Ultimas classificações" nzSize="small" *ngIf="lastRatings">
+  <nz-card style="text-align: center;"
+           nzTitle="Ultimas classificações" nzSize="small" *ngIf="lastRatings">
     <div nz-row  nzJustify="center">
-      <div nz-col *ngFor="let i of lastRatings" nzSpan="{{24/lastRatings.length}}">
-      <nz-card style=" width: max-content; margin: auto">
+      <div nz-col *ngFor="let i of lastRatings.reverse()" nzSpan="{{24/lastRatings.length}}">
+      <nz-card nz-popover nzPopoverContent="vs {{i.opponent.shortName}}
+      ({{i.date}} - {{i.isHome?'Casa':'Fora'}})" [class.bad]="i.rating<6"
+               [class.bad_medium]="i.rating>=6 && i.rating<=6.5"
+               [class.medium]="i.rating>=6.5 && i.rating<7"
+               [class.medium_good]="i.rating>=7 && i.rating<8"
+               [class.good]="i.rating>=8 && i.rating<9"
+               [class.excellent]="i.rating>=9" style=" width: 81px; margin: 2px auto">
         {{i.rating}}
       </nz-card>
       </div>
     </div>
   </nz-card>
-  <nz-card>
+  <nz-card style="text-align: center;"
+           nzTitle="Atributos" nzSize="small" *ngIf="attributes">
+    <app-player-attributes-graph [attribute]="attributes"></app-player-attributes-graph>
+  </nz-card>
+  <nz-card  *ngIf="performance||player.statistics.rating>0">
     <div *ngIf="!useOwnPerformance&&performance">
       <nz-collapse>
         <nz-collapse-panel nzHeader="Resumo">
@@ -57,7 +67,7 @@
             </div>
           </div>
         </nz-collapse-panel>
-        <nz-collapse-panel nzHeader="Goleiro">
+        <nz-collapse-panel *ngIf="player.position==='G'" nzHeader="Goleiro">
           <div nz-row>
             <div nz-col nzSpan="18">
       <span style="font-size: small">
@@ -66,7 +76,7 @@
             </div>
             <div nz-col nzSpan="6">
       <span style="font-size: small">
-      {{performance.goalsConceded*90/performance.minutesPlayed | number: '1.2-2'}}
+      {{performance.goalsConceded*90/performance.minutesPlayed | number: '1.0-2'}}
       </span>
             </div>
           </div>
@@ -91,7 +101,7 @@
             </div>
             <div nz-col nzSpan="6">
       <span style="font-size: small">
-      {{performance.goalsConcededInsideTheBox*90/performance.minutesPlayed | number: '1.2-2'}}
+      {{performance.goalsConcededInsideTheBox*90/performance.minutesPlayed | number: '1.0-2'}}
       </span>
             </div>
           </div>
@@ -103,7 +113,7 @@
             </div>
             <div nz-col nzSpan="6">
       <span style="font-size: small">
-      {{performance.goalsConcededOutsideTheBox*90/performance.minutesPlayed | number: '1.2-2'}}
+      {{performance.goalsConcededOutsideTheBox*90/performance.minutesPlayed | number: '1.0-2'}}
       </span>
             </div>
           </div>
@@ -128,7 +138,7 @@
             </div>
             <div nz-col nzSpan="6">
       <span style="font-size: small">
-      {{performance.saves*90/performance.minutesPlayed | number: '1.2-2'}}
+      {{performance.saves*90/performance.minutesPlayed | number: '1.0-2'}}
       </span>
             </div>
           </div>
@@ -141,7 +151,7 @@
             </div>
             <div nz-col nzSpan="6">
       <span style="font-size: small">
-      {{performance.savedShotsFromInsideTheBox*90/performance.minutesPlayed | number: '1.2-2'}}
+      {{performance.savedShotsFromInsideTheBox*90/performance.minutesPlayed | number: '1.0-2'}}
       </span>
             </div>
           </div>
@@ -153,7 +163,7 @@
             </div>
             <div nz-col nzSpan="6">
       <span style="font-size: small">
-      {{performance.savedShotsFromOutsideTheBox*90/performance.minutesPlayed | number: '1.2-2'}}
+      {{performance.savedShotsFromOutsideTheBox*90/performance.minutesPlayed | number: '1.0-2'}}
       </span>
             </div>
           </div>
@@ -292,7 +302,7 @@
             </div>
             <div nz-col nzSpan="6">
       <span style="font-size: small">
-      {{performance.totalShots*90/performance.minutesPlayed | number: '1.2-2'}}
+      {{performance.totalShots*90/performance.minutesPlayed | number: '1.0-2'}}
       </span>
             </div>
           </div>
@@ -304,7 +314,7 @@
             </div>
             <div nz-col nzSpan="6">
       <span style="font-size: small">
-      {{performance.shotsOnTarget*90/performance.minutesPlayed | number: '1.2-2'}}
+      {{performance.shotsOnTarget*90/performance.minutesPlayed | number: '1.0-2'}}
       </span>
             </div>
           </div>
@@ -440,7 +450,7 @@
             </div>
             <div nz-col nzSpan="6">
       <span style="font-size: small">
-      {{performance.accurateFinalThirdPasses*90/performance.minutesPlayed | number: '1.2-2'}}
+      {{performance.accurateFinalThirdPasses*90/performance.minutesPlayed | number: '1.0-2'}}
       </span>
             </div>
           </div>
@@ -479,7 +489,7 @@
             </div>
             <div nz-col nzSpan="6">
       <span style="font-size: small">
-      {{performance.touches*90/performance.minutesPlayed | number: '1.2-2'}}
+      {{performance.touches*90/performance.minutesPlayed | number: '1.0-2'}}
       </span>
             </div>
           </div>
@@ -491,7 +501,7 @@
             </div>
             <div nz-col nzSpan="6">
       <span style="font-size: small">
-      {{performance.totalPasses*90/performance.minutesPlayed | number: '1.2-2'}}
+      {{performance.totalPasses*90/performance.minutesPlayed | number: '1.0-2'}}
       </span>
             </div>
           </div>
@@ -503,7 +513,7 @@
             </div>
             <div nz-col nzSpan="6">
       <span style="font-size: small">
-      {{performance.accuratePasses*90/performance.minutesPlayed | number: '1.2-2'}}
+      {{performance.accuratePasses*90/performance.minutesPlayed | number: '1.0-2'}}
       </span>
             </div>
           </div>
@@ -516,7 +526,7 @@
             </div>
             <div nz-col nzSpan="6">
       <span style="font-size: small">
-      {{performance.totalOwnHalfPasses*90/performance.minutesPlayed | number: '1.2-2'}}
+      {{performance.totalOwnHalfPasses*90/performance.minutesPlayed | number: '1.0-2'}}
       </span>
             </div>
           </div>
@@ -528,7 +538,7 @@
             </div>
             <div nz-col nzSpan="6">
       <span style="font-size: small">
-      {{performance.accurateOwnHalfPasses*90/performance.minutesPlayed | number: '1.2-2'}}
+      {{performance.accurateOwnHalfPasses*90/performance.minutesPlayed | number: '1.0-2'}}
       </span>
             </div>
           </div>
@@ -540,7 +550,7 @@
             </div>
             <div nz-col nzSpan="6">
       <span style="font-size: small">
-      {{performance.totalOppositionHalfPasses*90/performance.minutesPlayed | number: '1.2-2'}}
+      {{performance.totalOppositionHalfPasses*90/performance.minutesPlayed | number: '1.0-2'}}
       </span>
             </div>
           </div>
@@ -552,7 +562,7 @@
             </div>
             <div nz-col nzSpan="6">
       <span style="font-size: small">
-      {{performance.accurateOppositionHalfPasses*90/performance.minutesPlayed | number: '1.2-2'}}
+      {{performance.accurateOppositionHalfPasses*90/performance.minutesPlayed | number: '1.0-2'}}
       </span>
             </div>
           </div>
@@ -565,7 +575,7 @@
             </div>
             <div nz-col nzSpan="6">
       <span style="font-size: small">
-      {{performance.possessionLost*90/performance.minutesPlayed | number: '1.2-2'}}
+      {{performance.possessionLost*90/performance.minutesPlayed | number: '1.0-2'}}
       </span>
             </div>
           </div>
@@ -578,7 +588,7 @@
             </div>
             <div nz-col nzSpan="6">
       <span style="font-size: small">
-      {{performance.totalDuelsWon*90/performance.minutesPlayed | number: '1.2-2'}}
+      {{performance.totalDuelsWon*90/performance.minutesPlayed | number: '1.0-2'}}
       </span>
             </div>
           </div>
@@ -590,7 +600,7 @@
             </div>
             <div nz-col nzSpan="6">
       <span style="font-size: small">
-      {{performance.groundDuelsWon*90/performance.minutesPlayed | number: '1.2-2'}}
+      {{performance.groundDuelsWon*90/performance.minutesPlayed | number: '1.0-2'}}
       </span>
             </div>
           </div>
@@ -602,7 +612,7 @@
             </div>
             <div nz-col nzSpan="6">
       <span style="font-size: small">
-      {{performance.aerialDuelsWon*90/performance.minutesPlayed | number: '1.2-2'}}
+      {{performance.aerialDuelsWon*90/performance.minutesPlayed | number: '1.0-2'}}
       </span>
             </div>
           </div>
@@ -616,7 +626,7 @@
             </div>
             <div nz-col nzSpan="6">
       <span style="font-size: small">
-      {{performance.interceptions*90/performance.minutesPlayed | number: '1.2-2'}}
+      {{performance.interceptions*90/performance.minutesPlayed | number: '1.0-2'}}
       </span>
             </div>
           </div>
@@ -628,7 +638,7 @@
             </div>
             <div nz-col nzSpan="6">
       <span style="font-size: small">
-      {{performance.tackles*90/performance.minutesPlayed | number: '1.2-2'}}
+      {{performance.tackles*90/performance.minutesPlayed | number: '1.0-2'}}
       </span>
             </div>
           </div>
@@ -640,7 +650,7 @@
             </div>
             <div nz-col nzSpan="6">
       <span style="font-size: small">
-      {{performance.tacklesWon*90/performance.minutesPlayed | number: '1.2-2'}}
+      {{performance.tacklesWon*90/performance.minutesPlayed | number: '1.0-2'}}
       </span>
             </div>
           </div>
@@ -652,7 +662,7 @@
             </div>
             <div nz-col nzSpan="6">
       <span style="font-size: small">
-      {{performance.clearances*90/performance.minutesPlayed | number: '1.2-2'}}
+      {{performance.clearances*90/performance.minutesPlayed | number: '1.0-2'}}
       </span>
             </div>
           </div>
@@ -665,7 +675,7 @@
             </div>
             <div nz-col nzSpan="6">
       <span style="font-size: small">
-      {{performance.possessionWonAttThird*90/performance.minutesPlayed | number: '1.2-2'}}
+      {{performance.possessionWonAttThird*90/performance.minutesPlayed | number: '1.0-2'}}
       </span>
             </div>
           </div>
@@ -678,7 +688,7 @@
             </div>
             <div nz-col nzSpan="6">
       <span style="font-size: small">
-      {{performance.fouls*90/performance.minutesPlayed | number: '1.2-2'}}
+      {{performance.fouls*90/performance.minutesPlayed | number: '1.0-2'}}
       </span>
             </div>
           </div>
@@ -728,7 +738,7 @@
             </div>
             <div nz-col nzSpan="6">
       <span style="font-size: small">
-      {{performance.yellowCards*90/performance.minutesPlayed | number: '1.2-2'}}
+      {{performance.yellowCards*90/performance.minutesPlayed | number: '1.0-2'}}
       </span>
             </div>
           </div>
@@ -772,7 +782,7 @@
         </nz-collapse-panel>
       </nz-collapse>
     </div>
-    <div *ngIf="useOwnPerformance && player.position!=='G'">
+    <div *ngIf="useOwnPerformance">
       <div nz-row *ngIf="player.statistics.minutesPlayed!==0">
         <div nz-col nzSpan="18">
       <span style="font-size: small">
@@ -801,7 +811,7 @@
       <div nz-row *ngIf="player.statistics.saves!==0">
         <div nz-col nzSpan="18">
       <span style="font-size: small">
-        Deesas
+        Defesas
       </span>
         </div>
         <div nz-col nzSpan="6">
@@ -998,6 +1008,35 @@
     </div>
   </nz-card>
   <ng-template #avatarTemplate>
-    <nz-avatar nzSrc="https://api.sofascore.app/api/v1/player/{{player.id}}/image"></nz-avatar>
+    <nz-avatar nzSize="large" nzShape="square" nzSrc="https://api.sofascore.app/api/v1/player/{{player.id}}/image"></nz-avatar>
+  </ng-template>
+  <ng-template #desc>
+    <div nz-row style="text-align: start">
+      <div nz-col nzSpan="2" *ngIf="performance||player.statistics.rating>0">
+      <span>
+        <span style=" padding: 2px; border-radius: 50%;" [class.bad]="player.statistics.rating<6"
+              [class.bad_medium]="player.statistics.rating>=6 && player.statistics.rating<=6.5"
+              [class.medium]="player.statistics.rating>=6.5 && player.statistics.rating<7"
+              [class.medium_good]="player.statistics.rating>=7 && player.statistics.rating<8"
+              [class.good]="player.statistics.rating>=8 && player.statistics.rating<9"
+              [class.excellent]="player.statistics.rating>=9"
+              *ngIf="player.statistics.rating>0">{{player.statistics.rating | number: '1.1-1'}}</span>
+        <span style=" padding: 2px; border-radius: 50%;"
+          [class.bad]="performance.rating<6"
+          [class.bad_medium]="performance.rating>=6 && performance.rating<=6.5"
+          [class.medium]="performance.rating>=6.5 && performance.rating<7"
+          [class.medium_good]="performance.rating>=7 && performance.rating<8"
+          [class.good]="performance.rating>=8 && performance.rating<9"
+          [class.excellent]="performance.rating>=9"
+          *ngIf="performance&&player.statistics.rating==0">
+      {{performance.rating| number: '1.1-1'}}</span>
+      </span>
+      </div>
+      <div nz-col [nzSpan]="(performance||player.statistics.rating>0)?22:24">
+      <span>
+        <span>{{getPosition(player.position, player.missingReason)}}</span>
+      </span>
+      </div>
+    </div>
   </ng-template>
 </div>

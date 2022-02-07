@@ -5,3 +5,33 @@
   /*border: 1px solid rgba(0, 0, 0, 0.15);*/
   /*width: 50px;*/
 }
+.bad{
+  padding: 2px;
+  border-radius: 50%;
+  background: rgb(255, 0, 8);
+}
+.bad_medium{
+  padding: 2px;
+  border-radius: 50%;
+  background: rgb(234, 167, 67);
+}
+.medium{
+  padding: 2px;
+  border-radius: 50%;
+  background: rgb(254, 255, 0);
+}
+.medium_good{
+  padding: 2px;
+  border-radius: 50%;
+  background: rgba(208, 255, 0);
+}
+.good{
+  padding: 2px;
+  border-radius: 50%;
+  background: #14ff00;
+}
+.excellent{
+  padding: 2px;
+  border-radius: 50%;
+  background: #00ffd9;
+}

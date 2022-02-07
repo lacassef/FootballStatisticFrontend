@@ -21,6 +21,7 @@ import {NzTabsModule} from "ng-zorro-antd/tabs";
 import {NzTimelineModule} from "ng-zorro-antd/timeline";
 import {NzEmptyModule} from "ng-zorro-antd/empty";
 import {NzModalModule} from "ng-zorro-antd/modal";
+import {NzPopoverModule} from "ng-zorro-antd/popover";
 
 
 
@@ -48,7 +49,8 @@ import {NzModalModule} from "ng-zorro-antd/modal";
     NzTabsModule,
     NzTimelineModule,
     NzEmptyModule,
-    NzModalModule
+    NzModalModule,
+    NzPopoverModule
   ],
   exports: [
     NzLayoutModule,
@@ -71,7 +73,8 @@ import {NzModalModule} from "ng-zorro-antd/modal";
     NzTabsModule,
     NzTimelineModule,
     NzEmptyModule,
-    NzModalModule
+    NzModalModule,
+    NzPopoverModule
   ],
 })
 export class SharedModule { }

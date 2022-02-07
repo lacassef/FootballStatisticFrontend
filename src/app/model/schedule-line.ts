@@ -14,6 +14,7 @@ export interface playersItem {
 	dateOfBirth: string;
 	position: string;
 	id: number;
+  avgRating: number
 	shortName: string;
 	substitute: boolean;
 	statistics: statisticsItem;

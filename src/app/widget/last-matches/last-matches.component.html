@@ -1,6 +1,6 @@
-<div class="last_matches_widget" *ngIf="home&&away">
+<div class="last_matches_widget" *ngIf="home&&away&&matchw">
   <div class="row">
-    <nz-table [nzPageSize]="5" nzSize="small" #homeTable [nzData]="home.reverse()">
+    <nz-table [nzTitle]="titleHome" [nzPageSize]="5" nzSize="small" #homeTable [nzData]="home.reverse()">
       <tbody>
       <tr *ngFor="let data of homeTable.data">
         <td><app-schedule-adapter (matchIsSelected)="emitEvent($event)" [schedule]="data">
@@ -10,7 +10,7 @@
     </nz-table>
   </div>
   <div class="row">
-    <nz-table [nzPageSize]="5" nzSize="small" #awayTable [nzData]="away.reverse()">
+    <nz-table [nzTitle]="titleAway" [nzPageSize]="5" nzSize="small" #awayTable [nzData]="away.reverse()">
       <tbody>
       <tr *ngFor="let data of awayTable.data">
         <td><app-schedule-adapter [schedule]="data" (matchIsSelected)="emitEvent($event)">
@@ -19,5 +19,12 @@
       </tbody>
     </nz-table>
   </div>
+  <ng-template #titleHome style="text-align: center;">
+    <span style="font-size: small">{{matchw.home.shortName}}</span>
+  </ng-template>
+  <ng-template #titleAway style="text-align: center;">
+    <span style="font-size: small">{{matchw.away.shortName}}</span>
+  </ng-template>
 </div>
 <nz-empty *ngIf="!(home&&away)"></nz-empty>
+
